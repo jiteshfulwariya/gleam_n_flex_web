@@ -1,0 +1,32 @@
+<div class="container main_container">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<table class="table table-bordered" style="margin-top: 20px;">
+				<thead style="background-color: #286090; color: #fff;">
+					<tr>
+						<th>Sr No.</th>
+						<th>Shipment Number</th>
+						<th>Status</th>
+						<th>Date of Departure</th>
+						<th>ETA</th>
+						<th>Track Shipment</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr ng-repeat="shipment in shipmentList.data">
+						<th scope="row">{{shipment.shipment_id}}</th>
+						<td>{{shipment.shipment_no}}</td>
+						<td>{{shipment.status}}</td>
+						<td>{{shipment.date_of_departure | date:'dd MMM, yyyy'}}</td>
+						<td>{{shipment.ETA_date | date:'dd MMM, yyyy'}}</td>
+						<td class="text-center"><span ng-click="getShipmentDetails({'shipment_no': shipment.shipment_no, 'inova_id': shipmentList.inova_id})"><i class="fa fa-ship fa-lg"></i></span></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

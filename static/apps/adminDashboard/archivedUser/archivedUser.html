@@ -1,0 +1,44 @@
+<div class="container main_container">
+	<h3 class="text-center">Archived Users</h3>
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<table class="table table-bordered" style="margin-top: 20px;">
+				<thead style="background-color: #286090; color: #fff;">
+					<tr>
+						<th>iNOVA ID</th>
+						<th>User Name</th>
+						<th>Status</th>
+						<th>Data Created</th>
+						<th>Date Modified</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="customer in archivedUserList">
+						<th scope="row">{{customer.inova_id}}</th>
+						<td>{{customer.first_name}} {{customer.last_name}}</td>
+						<td ng-if="!customer.is_active">Deactive</td>
+						<td>{{customer.created_at | date:'dd MMM, yyyy'}}</td>
+						<td>{{customer.modified_at | date:'dd MMM, yyyy'}}</td>
+						<td class="text-center">
+							<a ng-click="restoredUser(customer);"><i class="fa fa-reply fa-lg fa-fw"></i></a>
+							&nbsp;
+							<a ui-sref="editUser({'id' :customer.id})"><i class="fa fa-pencil fa-lg fa-fw"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 text-center">
+			<ul class="pagination">
+				<li ng-click="paginationNumberCall(1)" class="cursorHand"><a>First</a></li>
+				<li ng-click="paginationNumberCall(currentPage -1)" ng-if="currentPage >1" class="cursorHand"><a>Previous</a></li>
+				<li class="active" ng-show="currentPage != numberOfPages" class="cursorHand"><a>{{currentPage}}</a></li>
+				<li ng-click="paginationNumberCall(currentPage + 1)" ng-if="currentPage < numberOfPages" class="cursorHand"><a>Next</a></li>
+				<li ng-class="currentPage == numberOfPages ? 'active' : ''" ng-click="paginationNumberCall(numberOfPages)" class="cursorHand"><a>Last</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

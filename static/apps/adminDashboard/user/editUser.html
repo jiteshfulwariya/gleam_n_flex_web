@@ -1,0 +1,88 @@
+<style>
+	label{
+		font-weight: 500;
+	}
+	.sectionTitle{
+		font-weight: 700;
+		font-size: 16px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-sm-8">
+					<h3 style="margin-top: 10px;" class="text-center">Edit User</h3>
+				</div>
+				<div class="col-sm-4">
+					<a class="btn btn-danger" ui-sref="changeUserPassword({'id': UserDetails.id})">Change Password</a>
+				</div>
+				<div class="col-sm-12">
+					<hr style="margin: 5px;">
+				</div>
+			</div>
+			<form ng-submit="editUser(UserDetails)">
+				<fieldset>
+					<!-- <div class="login-logo"><a href="#">Transportex</a></div> -->
+					<div class="row">
+						<div class="col-sm-6">
+							<label for="inova_id">iNOVA ID</label>
+							<div class="form-group">
+								<input type="text" name="inova_id" id="inova_id" class="form-control" ng-model="UserDetails.inova_id" placeholder="iNOVA ID" autofocus>
+							</div>
+						</div>
+						<div class="col-sm-6">
+						</div>
+						<div class="col-sm-12">
+							<hr style="margin: 5px;">
+						</div>
+						<div class="col-sm-12">
+							<label class="sectionTitle">User Details</label>
+						</div>
+						<!-- <div class="col-sm-12">
+							<label for="username">User Name</label>
+							<div class="form-group">
+								<input type="text" name="username" id="username" class="form-control" ng-model="UserDetails.username" placeholder="User Name" autofocus>
+							</div>
+						</div> -->
+						<div class="col-sm-6">
+							<label for="username">First Name</label>
+							<div class="form-group">
+								<input type="text" name="first_name" id="first_name" class="form-control" ng-model="UserDetails.first_name" placeholder="First Name" autofocus>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label for="username">Last Name</label>
+							<div class="form-group">
+								<input type="text" name="last_name" id="last_name" class="form-control" ng-model="UserDetails.last_name" placeholder="Last Name" autofocus>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<label>Email-ID</label>
+							<div class="form-group">
+								<input type="text" name="email" id="email" class="form-control" ng-model="UserDetails.email" placeholder="Email-ID" autofocus>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12" style="padding-left: 0px;">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" value="" ng-model='UserDetails.is_active' checked>Activate Account
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<hr>
+					</div>
+					<div class="col-sm-12">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary">Save Changes</button>
+							<!-- <button class="btn btn-primary">Cancel</button> -->
+							<a class="btn btn-primary" ui-sref="dashboard">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

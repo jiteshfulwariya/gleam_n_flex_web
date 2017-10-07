@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="customerDashboardApp">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Taurus</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+	<link rel="stylesheet" href="{% static "bower_components/font-awesome/css/font-awesome.min.css" %}">
+	<!--<link rel="stylesheet" href="{% static "bower_components/angular-notify/dist/angular-notify.css" %}">-->
+	<style>
+		.footer {
+			/*position: absolute;*/
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+			color: #fff;
+			width: 100%;
+			/* Set the fixed height of the footer here */
+			/*height: 60px;*/
+			background-color: #000;
+			padding-top: 20px;
+			min-height: 60px;
+		}
+		.icon-wrapper{
+			position:relative;
+			float:left;
+		}
+		i {
+			width:100px;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.badge{
+			background:red;
+			width: auto;
+			height: auto;
+			margin: 0;
+			border-radius: 60%;
+			position:absolute;
+			top:7px;
+			right:53px;
+			font-size: 10px;
+			padding:3px;
+		}
+
+		.navbarList{
+			border-top: 5px solid red;
+			min-width: 140px;
+
+		}
+		.navbar-default .navbar-nav .dropdown.open a:focus {
+			color: #286090;
+			background-color: transparent;
+		}
+		.navbar-default{
+			background-color: #fff;
+			border: hidden;
+			border-radius: 0px;
+			border-bottom: 1px solid red;
+			margin-bottom: 0px;
+			/*padding: 10px 0px 20px 0px;*/
+		}
+		.navbar-default .navbar-nav > li > a {
+			color: #286090;
+			letter-spacing: 0.5px;
+			font-size: 15px;
+			font-weight: 600;
+		}
+	</style>
+
+	{% block css %} {% endblock %} {% block js %} {% endblock %}
+</head>
+
+
+{% block content %} {% endblock %}
+
+{% verbatim %}
+<body ng-controller="customerDashboardCtrl">
+	<!-- <nav class="navbar navbar-default" style="padding-bottom: 0px;">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" style="padding-top: 25px; padding-bottom: 25px;">Brand</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 25px; padding-bottom: 25px;">Manage Users<span class="caret"></span></a>
+						<ul class="dropdown-menu navbarList">
+							<li><a style="padding: 3px 10px;" ui-sref="addUser">Add User</a></li>
+							<li><a style="padding: 3px 10px;" href="#">All Users</a></li>
+							<li><a style="padding: 3px 10px;" href="">Archived Users</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 25px; padding-bottom: 25px;">Hello Admin<span class="caret"></span></a>
+						<ul class="dropdown-menu navbarList">
+							<li><a ui-sref="changePassword" style="padding: 3px 10px;">Change Password</a></li>
+						</ul>
+					</li>
+					<li>
+						<a ng-click="logout()" style="padding-top: 25px; padding-bottom: 25px; padding-left: 15px;">
+							<i class="fa fa-sign-out fa-lg" style="color: red; margin-left: 10px;"></i>
+						</a>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-right" style="margin-top: 20px; margin-right: 40px;">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search User" aria-describedby="basic-addon2">
+						<span class="input-group-addon" id="basic-addon2" style="background-color:#337ab7; color: #fff;"><i class="fa fa-search"></i></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</nav>-->
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Taurus</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li style="margin-right: 30px"><a href="">My Shipments</a></li>
+					<li style="margin-right: 30px"><a href="">Track</a></li>
+					<!-- <li style="margin-right: 30px"><a href="">Help</a></li> -->
+					<li style="margin-right: 10px" class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{myDetails.username}}<span class="caret"></span></a>
+						<ul class="dropdown-menu navbarList">
+							<li><a ui-sref="changePassword" style="padding: 3px 10px;">Change Password</a></li>
+						</ul>
+					</li>
+<!-- 					<li style="margin-right: 0px"><a href="#" class="icon-wrapper">
+						<i class="fa fa-bell fa-lg"></i><span class="badge">3</span></a>
+					</li>
+ -->					<li style="margin-right: 30px"><a ng-click="logout()">
+							<i class="fa fa-sign-out fa-lg" style="color: red;"></i>
+						</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	<div ui-view></div>
+	{% endverbatim %}
+
+	<script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+	<script src="{% static "bower_components/angular/angular.min.js" %}"></script>
+	<script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "bower_components/angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+
+	<script src="{% static "apps/customerDashboard/customerDashboardApp.js" %}"></script>
+	<script src="{% static "apps/customerDashboard/customerDashboardLandingCtrl.js" %}"></script>
+	<script src="{% static "apps/customerDashboard/customerDashboardServices.js" %}"></script>
+	<script src="{% static "apps/customerDashboard/dashboard/customerDashboardCtrl.js" %}"></script>
+	<script src="{% static "apps/customerDashboard/dashboard/changePasswordCtrl.js" %}"></script>
+	<script src="{% static "apps/customerDashboard/dashboard/shipmentDetailsCtrl.js" %}"></script>
+
+</body>
+
+</html>

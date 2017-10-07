@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="landingPageApp">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Gleam n Flex</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+
+	<!--<link rel="stylesheet" href="{% static "bower_components/angular-notify/dist/angular-notify.css" %}">-->
+
+
+
+	{% block css %} {% endblock %} {% block js %} {% endblock %}
+</head>
+
+
+{% block content %} {% endblock %}
+<body class="hold-transition login-page" ng-controller="landingPageCtrl">
+<div ui-view></div>
+<script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "bower_components/angular/angular.min.js" %}"></script>
+<script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "bower_components/angular-ui-router/release/angular-ui-router.min.js" %}"></script>
+
+<script src="{% static "apps/landingPageApp.js" %}"></script>
+<script src="{% static "apps/landingPageServices.js" %}"></script>
+<script src="{% static "apps/landingPageCtrl.js" %}"></script>
+<script src="{% static "apps/login/loginCtrl.js" %}"></script>
+
+
+</body>
+
+</html>
