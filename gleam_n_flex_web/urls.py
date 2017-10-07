@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^adminDashboard/$', adminDashboard),
     url(r'^customerDashboard/$', customerDashboard),
     url(r'^login/view/$', login_view),
+    url(r'^add/bill/$', add_bill),
+    url(r'^get/all/bill/$', get_all_bill),
 ]

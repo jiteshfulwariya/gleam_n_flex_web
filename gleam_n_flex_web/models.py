@@ -2,6 +2,7 @@ import re, os
 
 from django.db import models
 from django.contrib.auth.models import User, Group
+from helper_functions import convert_date_to_epoch
 from time import time
 
 

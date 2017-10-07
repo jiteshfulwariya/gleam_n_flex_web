@@ -12,7 +12,7 @@ migrations/
 project_db/
 Media
 bower_components/
-
+db.sqlite3
 node_modules
 
 gep_csv/

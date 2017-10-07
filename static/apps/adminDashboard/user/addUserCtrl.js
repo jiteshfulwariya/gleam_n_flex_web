@@ -25,8 +25,8 @@ angular.module('controllers')
 	});
 
 	$scope.addBill = function() {
-		console.log('User', $scope.billDetails);
-		var dataPromis = networkCall.addBillRequest($scope.UserDetails);
+		console.log('Bill', $scope.billDetails);
+		var dataPromis = networkCall.addBillRequest($scope.billDetails);
 		dataPromis.then(function(result) {
 			if (result.status) {
 				console.log(result);

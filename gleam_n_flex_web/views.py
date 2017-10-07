@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction, IntegrityError, connections, connection
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
 from django.shortcuts import render_to_response, render
-from .models import Customer
+from .models import Customer, Bill
 
 
 def loginIndex(request):
@@ -41,3 +41,34 @@ def login_view(request):
     else:
         logout(request)
         return JsonResponse({"validation" : "Invalid request", "status": False})
+
+
+def add_bill(request):
+    params = json.loads(request.body)
+    bill_details = params.get('billDetails')
+    bill_no = bill_details.get('bill_no')
+    op_no = bill_details.get('op_no')
+    token = bill_details.get('token')
+    patient_name = bill_details.get('patient_name')
+    consultant = bill_details.get('consultant')
+    perticulars = bill_details.get('perticulars')
+    qty = bill_details.get('qty')
+    patient_age = bill_details.get('patient_age')
+    mobile_no = bill_details.get('mobile_no')
+    gender = bill_details.get('gender')
+    payment_type = bill_details.get('payment_type')
+
+    if not bill_no:
+        return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    bill = Bill.objects.create(**bill_details)
+
+    return JsonResponse({"validation" : "New Bill Saved", "status": True})
+
+
+def get_all_bill(request):
+    bills = Bill.objects.all()
+
+    bill_list = [bill.get_json() for bill in bills]
+
+    return JsonResponse({"data": bill_list, "validation" : "New Bill Saved", "status": True})

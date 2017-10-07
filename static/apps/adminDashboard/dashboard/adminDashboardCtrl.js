@@ -5,17 +5,15 @@ angular.module('controllers')
 	$scope.numberOfPages = 1;
 
 	$timeout(function(){
-		$scope.getAllCustomer($scope.currentPage);
+		$scope.getAllCustomer();
 	});
 
-	$scope.getAllCustomer = function(currentPage) {
-		var dataPromis = networkCall.getAllCustomerRequest(currentPage);
+	$scope.getAllCustomer = function() {
+		var dataPromis = networkCall.getAllBillRequest();
 		dataPromis.then(function(result) {
 			if (result.status) {
-				$scope.customerList = result.data;
-				console.log('$scope.customerList',result);
-				$scope.currentPage = result.current_page;
-				$scope.numberOfPages = result.number_of_pages;
+				$scope.billList = result.data;
+				console.log('$scope.billList',result);
 			} else {
 				console.log(result.validation);
 			}

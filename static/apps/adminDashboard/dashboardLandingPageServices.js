@@ -1,8 +1,8 @@
 angular.module('services', [])
 .factory('networkCall', function($http) {
 
-	var getAllCustomerRequest = function(page_no) {
-		return $http.post('/get/all/customer/', {page_no: page_no}).then(function(result) {
+	var getAllBillRequest = function() {
+		return $http.get('/get/all/bill/').then(function(result) {
 			return result.data;
 		});
 	};
@@ -58,7 +58,7 @@ angular.module('services', [])
 	return {
 		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
-		getAllCustomerRequest: getAllCustomerRequest,
+		getAllBillRequest: getAllBillRequest,
 		getCustomerDetailsRequest: getCustomerDetailsRequest,
 		changePasswordRequest: changePasswordRequest,
 		changeUserPasswordRequest: changeUserPasswordRequest,
