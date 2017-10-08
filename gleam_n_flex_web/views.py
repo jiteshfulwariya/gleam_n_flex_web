@@ -71,4 +71,17 @@ def get_all_bill(request):
 
     bill_list = [bill.get_json() for bill in bills]
 
-    return JsonResponse({"data": bill_list, "validation" : "New Bill Saved", "status": True})
+    return JsonResponse({"data": bill_list, "status": True})
+
+
+def get_bill_details(request):
+    params = json.loads(request.body)
+    bill_id = params.get('bill_id')
+
+    try:
+        bill = Bill.objects.get(id=bill_id)
+    except Exception as e:
+        print e
+        return JsonResponse({"validation": 'Invalid Request', "status": False})
+
+    return JsonResponse({"data": bill.get_json(), "status": True})

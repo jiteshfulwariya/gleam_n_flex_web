@@ -55,6 +55,12 @@ angular.module('services', [])
 		});
 	};
 
+	var getBillDetailsRequest = function(id) {
+		return $http.post('/get/bill/details/', {bill_id: id}).then(function(result) {
+			return result.data;
+		});
+	};
+
 	return {
 		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
@@ -64,6 +70,7 @@ angular.module('services', [])
 		changeUserPasswordRequest: changeUserPasswordRequest,
 		editCustomerDetailsByIdRequest: editCustomerDetailsByIdRequest,
 		getAllArchivedUsersRequest: getAllArchivedUsersRequest,
+		getBillDetailsRequest: getBillDetailsRequest,
 		restoredUserRequest: restoredUserRequest
 	};
 

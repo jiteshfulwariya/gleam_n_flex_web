@@ -5,15 +5,15 @@ angular.module('controllers')
 	$scope.numberOfPages = 1;
 
 	$timeout(function(){
-		$scope.getAllCustomer();
+		$scope.getAllBill();
 	});
 
-	$scope.getAllCustomer = function() {
+	$scope.getAllBill = function() {
 		var dataPromis = networkCall.getAllBillRequest();
 		dataPromis.then(function(result) {
 			if (result.status) {
 				$scope.billList = result.data;
-				console.log('$scope.billList',result);
+				console.log('$scope.billList', $scope.billList);
 			} else {
 				console.log(result.validation);
 			}

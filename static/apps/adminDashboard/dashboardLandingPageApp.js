@@ -11,10 +11,10 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
-			.state('addUser', {
-				url: '/addUser',
-				templateUrl: '../static/apps/adminDashboard/user/addUser.html',
-				controller: 'addUserCtrl',
+			.state('addBill', {
+				url: '/addBill',
+				templateUrl: '../static/apps/adminDashboard/user/addBill.html',
+				controller: 'addBillCtrl',
 				resolve: {
 					loggedIn: isloggedIn
 				}
@@ -27,14 +27,12 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
-			.state('archivedUser', {
-				url: '/archivedUser',
-				templateUrl: '../static/apps/adminDashboard/archivedUser/archivedUser.html',
-				controller: 'archivedUserCtrl',
-				resolve: {
-					loggedIn: isloggedIn
-				}
+			.state('billDetails', {
+				url: '/billDetails/:id',
+				templateUrl: '../static/apps/adminDashboard/dashboard/invoice.html',
+				controller: 'billDetailsCtrl'
 			})
+
 			.state('changePassword', {
 				url: '/changePassword',
 				templateUrl: '../static/apps/adminDashboard/dashboard/changePassword.html',

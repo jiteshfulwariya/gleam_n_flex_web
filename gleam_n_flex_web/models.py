@@ -53,6 +53,7 @@ class Bill(models.Model):
 
     def get_json(self):
         result = {}
+        result['id'] = self.id
         result['bill_no'] = self.bill_no if self.bill_no else None
         result['op_no'] = self.op_no if self.op_no else None
         result['token'] = self.token if self.token else None

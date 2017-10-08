@@ -1,6 +1,6 @@
 angular.module('controllers')
-.controller('addUserCtrl', ['$scope', '$state', '$timeout', 'networkCall', function($scope, $state, $timeout, networkCall) {
-	console.log("addUserCtrl");
+.controller('addBillCtrl', ['$scope', '$state', '$timeout', 'networkCall', function($scope, $state, $timeout, networkCall) {
+	console.log("addBillCtrl");
 
 	$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 

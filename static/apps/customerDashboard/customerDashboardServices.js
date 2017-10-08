@@ -13,7 +13,7 @@ angular.module('services', [])
 		});
 	};
 
-	var addUserRequest = function(userDetails) {
+	var addBillRequest = function(userDetails) {
 		return $http.post('/tracking/account/registration/', { userDetails: userDetails}).then(function(result) {
 			return result;
 		});
@@ -56,7 +56,7 @@ angular.module('services', [])
 	};
 
 	return {
-		addUserRequest: addUserRequest,
+		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
 		getMyDetailsRequest: getMyDetailsRequest,
 		getCustomerDetailsRequest: getCustomerDetailsRequest,
