@@ -1,0 +1,96 @@
+<style>
+	label{
+		font-weight: 500;
+	}
+	.sectionTitle{
+		font-weight: 700;
+		font-size: 16px;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h4 class="text-center">Add Product</h4>
+			<form ng-submit="addProduct()">
+				<fieldset>
+					<!-- <div class="login-logo"><a href="#">Transportex</a></div> -->
+					<div class="row">
+<!-- 						<div class="col-sm-6">
+							<label for="bill_no">Bill No.</label>
+							<div class="form-group">
+								<input type="text" name="bill_no" id="bill_no" class="form-control" ng-model="productDetails.bill_no" placeholder="Bill No." autofocus>
+							</div>
+						</div>
+						<div class="col-sm-6">
+						</div> -->
+						<div class="col-sm-12">
+							<hr style="margin: 5px;">
+						</div>
+						<div class="col-sm-12">
+							<label class="sectionTitle">Product Details</label>
+						</div>
+						<div class="col-sm-12">
+							<label for="name">Name</label>
+							<div class="form-group">
+								<input type="text" name="name" id="name" class="form-control" ng-model="productDetails.name" placeholder="Product Name" autofocus>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<label for="description">Description</label>
+							<div class="form-group">
+								<textarea rows="4" cols="24" name="description" id="description"></textarea>
+							</div>
+						</div>
+<!-- 						<div class="col-sm-12">
+							<label for="op_no">Description</label>
+							<div class="form-group">
+							<textarea rows="4" cols="24" name="description" id="description"></textarea>
+							</div>
+						</div>
+ --><!-- 						<div class="col-sm-6">
+							<label for="token">Token</label>
+							<div class="form-group">
+								<input type="text" name="token" id="token" class="form-control" ng-model="productDetails.token" placeholder="Token" autofocus>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label for="consultant">Consultant</label>
+							<div class="form-group">
+								<input class="form-control" ng-model="productDetails.consultant" placeholder="Consultant" name="consultant" type="text" id="consultant" value="">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label for="perticulars">Perticulars</label>
+							<div class="form-group">
+								<textarea rows="4" cols="24" name="perticulars" id="perticulars"></textarea>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label>Patient Age</label>
+							<div class="form-group">
+								<input class="form-control" ng-model="productDetails.patient_age" placeholder="Age" name="patient_age" type="text" id="patient_age" value="">
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label>Mobile Number</label>
+							<div class="form-group">
+								<input class="form-control" ng-model="productDetails.mobile_no" placeholder="Mobile Number" name="mobile_no" type="text" id="mobile_no" value="">
+							</div>
+						</div>
+ -->
+					</div>
+
+<!-- 					<div class="col-sm-12">
+						<hr>
+					</div>
+ -->					<div class="col-sm-12">
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction, IntegrityError, connections, connection
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
 from django.shortcuts import render_to_response, render
-from .models import Customer, Bill
+from .models import Customer, Bill, Product
 
 
 def loginIndex(request):
@@ -85,3 +85,17 @@ def get_bill_details(request):
         return JsonResponse({"validation": 'Invalid Request', "status": False})
 
     return JsonResponse({"data": bill.get_json(), "status": True})
+
+
+def add_product(request):
+    params = json.loads(request.body)
+    product_details = params.get('productDetails')
+    name = product_details.get('name')
+    description = product_details.get('description')
+
+    if not name:
+        return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    product = Product.objects.create(**product_details)
+
+    return JsonResponse({"validation" : "New Product Saved", "status": True})

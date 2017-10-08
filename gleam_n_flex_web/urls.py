@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^customerDashboard/$', customerDashboard),
     url(r'^login/view/$', login_view),
     url(r'^add/bill/$', add_bill),
+    url(r'^add/product/$', add_product),
     url(r'^get/all/bill/$', get_all_bill),
     url(r'^get/bill/details/$', get_bill_details),
 ]

@@ -19,10 +19,10 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
-			.state('editUser', {
-				url: '/editUser/:id',
-				templateUrl: '../static/apps/adminDashboard/user/editUser.html',
-				controller: 'editUserCtrl',
+			.state('addProduct', {
+				url: '/addProduct/',
+				templateUrl: '../static/apps/adminDashboard/user/addProduct.html',
+				controller: 'addProductCtrl',
 				resolve: {
 					loggedIn: isloggedIn
 				}

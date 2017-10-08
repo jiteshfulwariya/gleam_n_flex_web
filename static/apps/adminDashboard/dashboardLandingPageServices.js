@@ -61,6 +61,13 @@ angular.module('services', [])
 		});
 	};
 
+	var addProductRequest = function(productDetails) {
+		// console.log('Product to be save; ', productDetails);
+		return $http.post('/add/product/', {productDetails: productDetails}).then(function(result) {
+			return result.data;
+		});
+	};
+
 	return {
 		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
@@ -71,7 +78,8 @@ angular.module('services', [])
 		editCustomerDetailsByIdRequest: editCustomerDetailsByIdRequest,
 		getAllArchivedUsersRequest: getAllArchivedUsersRequest,
 		getBillDetailsRequest: getBillDetailsRequest,
-		restoredUserRequest: restoredUserRequest
+		restoredUserRequest: restoredUserRequest,
+		addProductRequest: addProductRequest
 	};
 
 });
