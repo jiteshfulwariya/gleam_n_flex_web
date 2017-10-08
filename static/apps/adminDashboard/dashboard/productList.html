@@ -1,0 +1,26 @@
+<div class="container main_container">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<table class="table table-bordered" style="margin-top: 20px;">
+				<thead style="background-color: #286090; color: #fff;">
+					<tr>
+						<th>Product Name</th>
+						<th>Description</th>
+						<th>Details</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="product in productList">
+
+						<td>{{product.name }}</td>
+						<td>{{ product.description }}</td>
+
+						<td class="text-center"><a ui-sref="productDetails({'id' :product.id})"><i class="fa fa-pencil fa-lg"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>

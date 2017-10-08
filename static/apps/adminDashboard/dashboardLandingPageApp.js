@@ -11,6 +11,16 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
+
+			.state('productList', {
+				url: '/productList',
+				templateUrl: '../static/apps/adminDashboard/dashboard/productList.html',
+				controller: 'productListCtrl',
+				resolve: {
+					loggedIn: isloggedIn
+				}
+			})
+
 			.state('addBill', {
 				url: '/addBill',
 				templateUrl: '../static/apps/adminDashboard/user/addBill.html',

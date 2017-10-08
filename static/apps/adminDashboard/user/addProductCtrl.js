@@ -29,7 +29,7 @@ angular.module('controllers')
 			if (result.status) {
 				console.log(result);
 				$scope.initializeProductDetails();
-				$state.go('dashboard');
+				$state.go('productList');
 			}else {
 				console.log(result.validation);
 			}

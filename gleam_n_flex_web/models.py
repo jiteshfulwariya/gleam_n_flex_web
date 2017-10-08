@@ -82,3 +82,16 @@ class Product(models.Model):
 
     def __unicode__(self):
         return 'Product Name: {}'.format(self.name)
+
+    def get_json(self):
+        result = {}
+        result['id'] = self.id
+        result['name'] = self.name
+        result['image'] = str(self.image) if self.image else None
+        result['caption'] = self.caption if self.caption else None
+        result['description'] = self.description if self.description else None
+        result['detail'] = self.detail if self.detail else None
+        result['quantity'] = self.quantity if self.quantity else None
+        result['created'] = convert_date_to_epoch(self.created) if self.created else None
+        result['modified'] = convert_date_to_epoch(self.modified) if self.modified else None
+        return result

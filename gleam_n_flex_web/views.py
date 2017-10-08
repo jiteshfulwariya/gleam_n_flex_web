@@ -93,9 +93,19 @@ def add_product(request):
     name = product_details.get('name')
     description = product_details.get('description')
 
-    if not name:
+    if not product_details.get('name'):
         return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    print name, description, product_details
 
     product = Product.objects.create(**product_details)
 
     return JsonResponse({"validation" : "New Product Saved", "status": True})
+
+
+def get_all_product(request):
+    products = Product.objects.all()
+
+    product_list = [product.get_json() for product in products]
+
+    return JsonResponse({"data": product_list, "status": True})

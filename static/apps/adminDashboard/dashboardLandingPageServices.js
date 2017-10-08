@@ -68,6 +68,12 @@ angular.module('services', [])
 		});
 	};
 
+	var getAllProductRequest = function() {
+		return $http.get('/get/all/product/').then(function(result) {
+			return result.data;
+		});
+	};
+
 	return {
 		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
@@ -78,6 +84,7 @@ angular.module('services', [])
 		editCustomerDetailsByIdRequest: editCustomerDetailsByIdRequest,
 		getAllArchivedUsersRequest: getAllArchivedUsersRequest,
 		getBillDetailsRequest: getBillDetailsRequest,
+		getAllProductRequest: getAllProductRequest,
 		restoredUserRequest: restoredUserRequest,
 		addProductRequest: addProductRequest
 	};
