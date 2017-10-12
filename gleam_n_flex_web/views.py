@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonRes
 from django.shortcuts import render_to_response, render
 from .models import Customer, Bill, Product
 
+from helper_functions import convert_epoch_to_date
 
 def loginIndex(request):
     return render_to_response('html_templates/loginIndex.html')
@@ -52,11 +53,15 @@ def add_bill(request):
     patient_name = bill_details.get('patient_name')
     consultant = bill_details.get('consultant')
     particulars = bill_details.get('particulars')
+    dob = bill_details.get('dob')
     qty = bill_details.get('qty')
     patient_age = bill_details.get('patient_age')
     mobile_no = bill_details.get('mobile_no')
     gender = bill_details.get('gender')
     payment_type = bill_details.get('payment_type')
+
+    if bill_details.get('dob'):
+        bill_details['dob'] = convert_epoch_to_date(dob)
 
     if not bill_no:
         return JsonResponse({"validation" : "Invalid Request", "status": False})
@@ -122,3 +127,25 @@ def get_all_product(request):
     product_list = [product.get_json() for product in products]
 
     return JsonResponse({"data": product_list, "status": True})
+
+
+def sale_product(request):
+    params = json.loads(request.body)
+    product_sale_details = params.get('product_sale_details')
+    product_id = product_sale_details.get('product_id')
+    sale_quantities = product_sale_details.get('sale_quantities')
+
+    if not sale_quantities:
+        return JsonResponse({"validation" : "Invalid Sale Quantities", "status": False})
+
+    try:
+        product = Product.objects.get(id=product_id)
+    except Exception as e:
+        print e
+        return JsonResponse({"validation": 'Invalid Request', "status": False})
+
+    product.quantity = product.quantity - int(sale_quantities)
+    product.save()
+
+    return JsonResponse({"validation" : "Product Sold", "status": True})
+

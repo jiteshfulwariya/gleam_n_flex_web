@@ -45,10 +45,10 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 				controller: 'billDetailsCtrl'
 			})
 
-			.state('saleProduct', {
-				url: '/saleProduct/:id',
-				templateUrl: '../static/apps/adminDashboard/dashboard/productSale.html',
-				controller: 'productSaleCtrl'
+			.state('productDetails', {
+				url: '/productDetails/:id',
+				templateUrl: '../static/apps/adminDashboard/dashboard/productDetails.html',
+				controller: 'productDetailsCtrl'
 			})
 
 			.state('changePassword', {

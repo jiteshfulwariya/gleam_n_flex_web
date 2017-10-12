@@ -26,6 +26,7 @@ angular.module('controllers')
 			patient_name: null,
 			consultant: null,
 			particulars: null,
+			dob: null,
 			qty: null,
 			patient_age: null,
 			mobile_no: null,
@@ -41,6 +42,7 @@ angular.module('controllers')
 
 	$scope.addBill = function() {
 
+		$scope.billDetails.dob = new Date($scope.billDetails.dob).getTime();
 		console.log('Bill', $scope.billDetails);
 		var dataPromis = networkCall.addBillRequest($scope.billDetails);
 		dataPromis.then(function(result) {

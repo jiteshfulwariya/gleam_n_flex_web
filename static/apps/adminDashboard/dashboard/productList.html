@@ -15,12 +15,12 @@
 				<tbody>
 					<tr ng-repeat="product in productList">
 
-						<td>{{product.name }}</td>
+						<td>{{ product.name }}</td>
 						<td>{{ product.description }}</td>
 						<td>{{ product.quantity }}</td>
 						<td>{{ product.price }}</td>
 
-						<td class="text-center"><a ui-sref="saleProduct({'id' :product.id})"><i class="fa fa-pencil fa-lg"></i></a></td>
+						<td class="text-center"><a ui-sref="productDetails({'id' :product.id})"><i class="fa fa-pencil fa-lg"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

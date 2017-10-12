@@ -25,6 +25,12 @@ angular.module('services', [])
 		});
 	};
 
+	var saleProductRequest = function(productSaleDetails) {
+		return $http.post('/sale/product/', {product_sale_details: productSaleDetails}).then(function(result) {
+			return result;
+		});
+	};
+
 	var getCustomerDetailsRequest = function(id) {
 		return $http.post('/get/customer/', {customer_id: id}).then(function(result) {
 			return result.data;
@@ -93,6 +99,7 @@ angular.module('services', [])
 		getBillDetailsRequest: getBillDetailsRequest,
 		getAllProductRequest: getAllProductRequest,
 		restoredUserRequest: restoredUserRequest,
+		saleProductRequest: saleProductRequest,
 		addProductRequest: addProductRequest
 	};
 
