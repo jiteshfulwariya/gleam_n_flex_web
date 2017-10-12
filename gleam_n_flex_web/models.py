@@ -74,6 +74,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     image = models.FileField(upload_to=upload_product_image,null=True,blank=True)
     caption = models.TextField(null=True,blank=True)
+    price = models.FloatField(null=True,blank=True, default=0)
     description = models.TextField(null=True,blank=True)
     detail = models.TextField(null=True,blank=True)
     quantity = models.IntegerField(default=0)
@@ -89,6 +90,7 @@ class Product(models.Model):
         result['name'] = self.name
         result['image'] = str(self.image) if self.image else None
         result['caption'] = self.caption if self.caption else None
+        result['price'] = self.price if self.price else None
         result['description'] = self.description if self.description else None
         result['detail'] = self.detail if self.detail else None
         result['quantity'] = self.quantity if self.quantity else None

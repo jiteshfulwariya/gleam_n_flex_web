@@ -8,6 +8,8 @@ angular.module('controllers')
 		$scope.productDetails = {
 			name: null,
 			description: null,
+			price: null,
+			quantity: null,
 		}
 
 		// $scope.productDetails = {

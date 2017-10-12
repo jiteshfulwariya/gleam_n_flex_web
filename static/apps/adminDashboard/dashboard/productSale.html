@@ -10,8 +10,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<h4 class="text-center">Add Product</h4>
-			<form ng-submit="addProduct()">
+			<h4 class="text-center">Sale Product</h4>
+			<form ng-submit="saleProduct()">
 				<fieldset>
 					<!-- <div class="login-logo"><a href="#">Transportex</a></div> -->
 					<div class="row">
@@ -27,7 +27,7 @@
 							<hr style="margin: 5px;">
 						</div>
 						<div class="col-sm-12">
-							<label class="sectionTitle">Product Details</label>
+							<label class="sectionTitle">Product Sale</label>
 						</div>
 						<div class="col-sm-12">
 							<label for="name">Name</label>
@@ -47,13 +47,14 @@
 								<input type="text" name="quantity" id="quantity" class="form-control" ng-model="productDetails.quantity" placeholder="Quantity" autofocus>
 							</div>
 						</div>
-
-						<div class="col-sm-6">
-							<label for="description">Description</label>
+						<div class="col-sm-12">
+							<label for="saleQuantity">Sale Quantities</label>
 							<div class="form-group">
-								<textarea rows="4" cols="24" name="description" id="description"></textarea>
+								<input type="text" name="saleQuantity" id="saleQuantity" class="form-control" placeholder="Sale Quantities" autofocus>
 							</div>
 						</div>
+
+
 <!-- 						<div class="col-sm-12">
 							<label for="op_no">Description</label>
 							<div class="form-group">

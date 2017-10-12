@@ -29,6 +29,7 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
+
 			.state('addProduct', {
 				url: '/addProduct/',
 				templateUrl: '../static/apps/adminDashboard/user/addProduct.html',
@@ -37,10 +38,17 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 					loggedIn: isloggedIn
 				}
 			})
+
 			.state('billDetails', {
 				url: '/billDetails/:id',
 				templateUrl: '../static/apps/adminDashboard/dashboard/invoice.html',
 				controller: 'billDetailsCtrl'
+			})
+
+			.state('saleProduct', {
+				url: '/saleProduct/:id',
+				templateUrl: '../static/apps/adminDashboard/dashboard/productSale.html',
+				controller: 'productSaleCtrl'
 			})
 
 			.state('changePassword', {

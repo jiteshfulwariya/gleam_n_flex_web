@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^get/all/bill/$', get_all_bill),
     url(r'^get/all/product/$', get_all_product),
     url(r'^get/bill/details/$', get_bill_details),
+    url(r'^get/product/$', get_product_details),
 ]

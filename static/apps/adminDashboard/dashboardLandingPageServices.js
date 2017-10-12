@@ -31,6 +31,12 @@ angular.module('services', [])
 		});
 	};
 
+	var getProductDetailsRequest = function(id) {
+		return $http.post('/get/product/', {product_id: id}).then(function(result) {
+			return result.data;
+		});
+	};
+
 	var editCustomerDetailsByIdRequest = function(userDetails) {
 		return $http.post('/tracking/account/registration/', { userDetails: userDetails}).then(function(result) {
 			return result;
@@ -83,6 +89,7 @@ angular.module('services', [])
 		changeUserPasswordRequest: changeUserPasswordRequest,
 		editCustomerDetailsByIdRequest: editCustomerDetailsByIdRequest,
 		getAllArchivedUsersRequest: getAllArchivedUsersRequest,
+		getProductDetailsRequest: getProductDetailsRequest,
 		getBillDetailsRequest: getBillDetailsRequest,
 		getAllProductRequest: getAllProductRequest,
 		restoredUserRequest: restoredUserRequest,

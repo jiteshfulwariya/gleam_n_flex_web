@@ -87,6 +87,19 @@ def get_bill_details(request):
     return JsonResponse({"data": bill.get_json(), "status": True})
 
 
+def get_product_details(request):
+    params = json.loads(request.body)
+    product_id = params.get('product_id')
+
+    try:
+        product = Product.objects.get(id=product_id)
+    except Exception as e:
+        print e
+        return JsonResponse({"validation": 'Invalid Request', "status": False})
+
+    return JsonResponse({"data": product.get_json(), "status": True})
+
+
 def add_product(request):
     params = json.loads(request.body)
     product_details = params.get('productDetails')
