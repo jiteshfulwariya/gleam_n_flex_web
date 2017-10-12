@@ -51,7 +51,7 @@ def add_bill(request):
     token = bill_details.get('token')
     patient_name = bill_details.get('patient_name')
     consultant = bill_details.get('consultant')
-    perticulars = bill_details.get('perticulars')
+    particulars = bill_details.get('particulars')
     qty = bill_details.get('qty')
     patient_age = bill_details.get('patient_age')
     mobile_no = bill_details.get('mobile_no')
