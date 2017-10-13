@@ -72,6 +72,12 @@
 							</div>
 						</div>
 
+						<div class="col-sm-6">
+							<label for="role" style ="font-weight:normal;">Payment Mode</label>
+				                <select class="form-control" id="role" ng-model="billDetails.payment_type" style="border-radius:0px; height:40px;" ng-options="choice.id as choice.name for choice in choicesList.data">
+				                </select>
+						</div>
+
 					</div>
 
 					<div class="col-sm-12">

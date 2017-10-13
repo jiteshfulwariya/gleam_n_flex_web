@@ -149,3 +149,8 @@ def sale_product(request):
 
     return JsonResponse({"validation" : "Product Sold", "status": True})
 
+
+def get_choices(request):
+    payment_type_choice_list = [{'id': payment_type[0], 'name': payment_type[1]} for payment_type in Bill.PAYMENTCHOICE]
+
+    return JsonResponse({"data" : payment_type_choice_list, "status": True})

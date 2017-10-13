@@ -31,6 +31,12 @@ angular.module('services', [])
 		});
 	};
 
+	var getPaymentChoicesRequest = function() {
+		return $http.get('/get/choices/').then(function(result) {
+			return result;
+		});
+	};
+
 	var getCustomerDetailsRequest = function(id) {
 		return $http.post('/get/customer/', {customer_id: id}).then(function(result) {
 			return result.data;
@@ -96,6 +102,7 @@ angular.module('services', [])
 		editCustomerDetailsByIdRequest: editCustomerDetailsByIdRequest,
 		getAllArchivedUsersRequest: getAllArchivedUsersRequest,
 		getProductDetailsRequest: getProductDetailsRequest,
+		getPaymentChoicesRequest: getPaymentChoicesRequest,
 		getBillDetailsRequest: getBillDetailsRequest,
 		getAllProductRequest: getAllProductRequest,
 		restoredUserRequest: restoredUserRequest,

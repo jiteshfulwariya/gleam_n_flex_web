@@ -67,6 +67,7 @@ class Bill(models.Model):
         result['mobile_no'] = self.mobile_no if self.mobile_no else None
         result['gender'] = self.gender if self.gender else None
         result['payment_type'] = self.payment_type if self.payment_type else None
+        result['payment_type_name'] = self.get_payment_type_display() if self.payment_type else None
         result['created'] = convert_date_to_epoch(self.created) if self.created else None
         result['modified'] = convert_date_to_epoch(self.modified) if self.modified else None
         return result

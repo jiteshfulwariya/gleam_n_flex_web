@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^get/bill/details/$', get_bill_details),
     url(r'^get/product/$', get_product_details),
     url(r'^sale/product/$', sale_product),
+    url(r'^get/choices/$', get_choices),
 ]

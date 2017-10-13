@@ -36,8 +36,13 @@ angular.module('controllers')
 
 	}
 
+	$scope.init = function(){
+		$scope.choicesId();
+	}
+
 	$timeout(function(){
 		$scope.initializeBillDetails();
+		$scope.init();
 	});
 
 	$scope.addBill = function() {
@@ -55,5 +60,23 @@ angular.module('controllers')
 			}
 		});
 	}
+
+	$scope.choicesId = function(){
+		console.log("choicesId");
+		var dataPromis = networkCall.getPaymentChoicesRequest();
+		dataPromis.then(function(result){
+			if(result.status){
+				$scope.choicesList = result.data;
+				console.log("choicesList",result.data);
+				console.log(result.validation);
+			}else{
+				console.log(result.validation);
+				Notification.error(result.validation);
+			}
+		});
+
+};
+
+
 
 }]);
