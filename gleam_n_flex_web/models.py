@@ -39,6 +39,7 @@ class Bill(models.Model):
     token = models.CharField(max_length=20, null=True, blank=True)
     patient_name = models.CharField(max_length=500, null=True, blank=True)
     consultant = models.CharField(max_length=500, null=True, blank=True)
+    amount = models.FloatField(null=True, blank=True, default=0)
     particulars = models.CharField(max_length=500, null=True, blank=True)
     qty = models.FloatField(max_length=500, null=True, blank=True)
     patient_age = models.IntegerField(null=True, blank=True)
@@ -58,6 +59,7 @@ class Bill(models.Model):
         result['bill_no'] = self.bill_no if self.bill_no else None
         result['op_no'] = self.op_no if self.op_no else None
         result['token'] = self.token if self.token else None
+        result['amount'] = self.amount if self.amount else None
         result['patient_name'] = self.patient_name if self.patient_name else None
         result['consultant'] = self.consultant if self.consultant else None
         result['particulars'] = self.particulars if self.particulars else None

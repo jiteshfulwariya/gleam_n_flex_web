@@ -52,6 +52,7 @@ def add_bill(request):
     token = bill_details.get('token')
     patient_name = bill_details.get('patient_name')
     consultant = bill_details.get('consultant')
+    amount = bill_details.get('amount')
     particulars = bill_details.get('particulars')
     dob = bill_details.get('dob')
     qty = bill_details.get('qty')
@@ -60,11 +61,19 @@ def add_bill(request):
     gender = bill_details.get('gender')
     payment_type = bill_details.get('payment_type')
 
-    if bill_details.get('dob'):
+    if dob:
         bill_details['dob'] = convert_epoch_to_date(dob)
+    else:
+        bill_details['dob'] = None
 
     if not bill_no:
         return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    try:
+       amount = int(amount)
+    except Exception as e:
+        print e
+        return JsonResponse({"validation" : "Invalid Amount", "status": False})
 
     bill = Bill.objects.create(**bill_details)
 

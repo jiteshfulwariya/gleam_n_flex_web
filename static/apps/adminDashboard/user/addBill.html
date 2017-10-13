@@ -56,7 +56,8 @@
 						<div class="col-sm-6">
 							<label for="particulars">Particulars</label>
 							<div class="form-group">
-								<textarea rows="4" cols="24" name="particulars" id="particulars"></textarea>
+<!-- 								<textarea rows="4" cols="24" ng-model="$billDetails.particulars" name="particulars" id="particulars"></textarea> -->
+								<input class="form-control" ng-model="billDetails.particulars" placeholder="Particulars" name="particulars" type="text" id="particulars" value="">
 							</div>
 						</div>
 						<div class="col-sm-6">
@@ -69,6 +70,13 @@
 							<label>Mobile Number</label>
 							<div class="form-group">
 								<input class="form-control" ng-model="billDetails.mobile_no" placeholder="Mobile Number" name="mobile_no" type="text" id="mobile_no" value="">
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<label>Amount</label>
+							<div class="form-group">
+								<input class="form-control" ng-model="billDetails.amount" placeholder="Amount" name="amount" type="number" id="amount" value="">
 							</div>
 						</div>
 
