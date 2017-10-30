@@ -47,27 +47,38 @@ def login_view(request):
 def add_bill(request):
     params = json.loads(request.body)
     bill_details = params.get('billDetails')
+    patient_name = bill_details.get('patient_name')
+
     bill_no = bill_details.get('bill_no')
     op_no = bill_details.get('op_no')
     token = bill_details.get('token')
-    patient_name = bill_details.get('patient_name')
     consultant = bill_details.get('consultant')
     amount = bill_details.get('amount')
     particulars = bill_details.get('particulars')
-    dob = bill_details.get('dob')
     qty = bill_details.get('qty')
+    payment_type = bill_details.get('payment_type')
+    dob = bill_details.get('dob')
     patient_age = bill_details.get('patient_age')
     mobile_no = bill_details.get('mobile_no')
     gender = bill_details.get('gender')
-    payment_type = bill_details.get('payment_type')
-
-    if dob:
-        bill_details['dob'] = convert_epoch_to_date(dob)
-    else:
-        bill_details['dob'] = None
 
     if not bill_no:
         return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    bill_info = {}
+    customer = create_customer(bill_details)
+    if not customer:
+        return JsonResponse({"validation" : "Invalid Request", "status": False})
+
+    bill_info['customer'] = customer
+    bill_info['bill_no'] = bill_no
+    bill_info['op_no'] = op_no
+    bill_info['token'] = token
+    bill_info['consultant'] = consultant
+    bill_info['amount'] = amount
+    bill_info['particulars'] = particulars
+    bill_info['qty'] = qty
+    bill_info['payment_type'] = payment_type
 
     try:
        amount = int(amount)
@@ -75,7 +86,7 @@ def add_bill(request):
         print e
         return JsonResponse({"validation" : "Invalid Amount", "status": False})
 
-    bill = Bill.objects.create(**bill_details)
+    bill = Bill.objects.create(**bill_info)
 
     return JsonResponse({"validation" : "New Bill Saved", "status": True})
 
@@ -163,3 +174,54 @@ def get_choices(request):
     payment_type_choice_list = [{'id': payment_type[0], 'name': payment_type[1]} for payment_type in Bill.PAYMENTCHOICE]
 
     return JsonResponse({"data" : payment_type_choice_list, "status": True})
+
+
+def create_customer(bill_details):
+    patient_name = bill_details.get('patient_name')
+    mobile_no = bill_details.get('mobile_no')
+    email = bill_details.get('email')
+    dob = bill_details.get('dob')
+    age = bill_details.get('patient_age')
+    gender = bill_details.get('gender')
+
+    with transaction.atomic():
+        if dob:
+            bill_details['dob'] = convert_epoch_to_date(dob)
+        else:
+            bill_details['dob'] = None
+
+        full_name = patient_name.split(' ')
+
+        print 'patient_name: ', patient_name
+        print 'full_name: ', full_name
+        if len(full_name) == 2:
+            first_name = full_name[0]
+            last_name = full_name[1]
+        elif len(full_name) == 3:
+            first_name = full_name[0]
+            middle_name = full_name[1]
+            last_name = full_name[2]
+        else:
+            print 'Invalid Patient Name Format'
+            return None
+
+        try:
+            user = User.objects.create(username=email, first_name=first_name, last_name=last_name)
+        except Exception as e:
+            print 'Error while saving user: ', e
+            return None
+
+        customer_info = {}
+        customer_info['mobile_no'] = mobile_no
+        customer_info['user'] = user
+        customer_info['dob'] = bill_details['dob']
+        customer_info['age'] = age
+        customer_info['gender'] = gender
+
+        try:
+            customer = Customer.objects.create(**customer_info)
+        except Exception as e:
+            print 'Error while saving customer: ', e
+            return None
+
+        return customer

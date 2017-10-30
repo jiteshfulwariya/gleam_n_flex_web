@@ -30,9 +30,15 @@
 							<label class="sectionTitle">Invoice Details</label>
 						</div>
 						<div class="col-sm-12">
-							<label for="patient_name">Patient Name</label>
+							<label for="patient_name">Patient Name *</label>
 							<div class="form-group">
-								<input type="text" name="patient_name" id="patient_name" class="form-control" ng-model="billDetails.patient_name" placeholder="Patient Name" autofocus>
+								<input type="text" name="patient_name" id="patient_name" class="form-control" ng-model="billDetails.patient_name" placeholder="Patient Name" autofocus required>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label for="email">Email *</label>
+							<div class="form-group">
+								<input type="text" name="email" id="email" class="form-control" ng-model="billDetails.email" placeholder="Email" autofocus>
 							</div>
 						</div>
 						<div class="col-sm-6">
