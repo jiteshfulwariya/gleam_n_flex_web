@@ -31,6 +31,12 @@ angular.module('services', [])
 		});
 	};
 
+	var sendInvoiceRequest = function(invoiceDetails) {
+		return $http.post('/send/invoice/', {invoice_details: invoiceDetails}).then(function(result) {
+			return result;
+		});
+	};
+
 	var getPaymentChoicesRequest = function() {
 		return $http.get('/get/choices/').then(function(result) {
 			return result;
@@ -107,6 +113,7 @@ angular.module('services', [])
 		getAllProductRequest: getAllProductRequest,
 		restoredUserRequest: restoredUserRequest,
 		saleProductRequest: saleProductRequest,
+		sendInvoiceRequest: sendInvoiceRequest,
 		addProductRequest: addProductRequest
 	};
 

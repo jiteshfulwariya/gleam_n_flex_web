@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^get/product/$', get_product_details),
     url(r'^sale/product/$', sale_product),
     url(r'^get/choices/$', get_choices),
+    url(r'^send/invoice/$', send_invoice),
 ]

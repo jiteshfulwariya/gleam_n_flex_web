@@ -25,4 +25,21 @@ angular.module('controllers')
 		$scope.getAllCustomer(currentPage);
 	}
 
+	$scope.sendInvoice = function(bill) {
+		console.log('Invoice Details', bill);
+
+		var invoiceDetails = {"invoice_id": bill.id}
+
+		var dataPromis = networkCall.sendInvoiceRequest(invoiceDetails);
+		dataPromis.then(function(result) {
+			if (result.status) {
+				console.log(result);
+			}else {
+				console.log(result.validation);
+			}
+		});
+	}
+
+
+
 }]);

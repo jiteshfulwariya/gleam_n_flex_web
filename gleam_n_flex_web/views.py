@@ -3,6 +3,7 @@ import json,datetime, re, os, random, string, csv, math
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User, Group
 from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction, IntegrityError, connections, connection
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
@@ -10,6 +11,7 @@ from django.shortcuts import render_to_response, render
 from .models import Customer, Bill, Product
 
 from helper_functions import convert_epoch_to_date
+from .settings import EMAIL_HOST_USER, BASE_DIR
 
 def loginIndex(request):
     return render_to_response('html_templates/loginIndex.html')
@@ -169,7 +171,6 @@ def sale_product(request):
 
     return JsonResponse({"validation" : "Product Sold", "status": True})
 
-
 def get_choices(request):
     payment_type_choice_list = [{'id': payment_type[0], 'name': payment_type[1]} for payment_type in Bill.PAYMENTCHOICE]
 
@@ -225,3 +226,17 @@ def create_customer(bill_details):
             return None
 
         return customer
+
+
+def send_invoice(request):
+    data_dict = json.loads(request.body)
+    invoice_id = data_dict.get('invoice_details')
+    print 'invoice_id: ', invoice_id
+    print 'Document Path: ', BASE_DIR+'/Media/pdf_sample.pdf'
+    document_path = BASE_DIR+'/Media/pdf_sample.pdf'
+
+    email = EmailMessage('Subject here', 'Here is the message.', EMAIL_HOST_USER, ['acwankhede@gmail.com'])
+    email.attach_file(document_path)
+    email.send()
+
+    return JsonResponse({"validation" : 'Invoice sent', "status": True})
