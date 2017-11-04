@@ -37,10 +37,10 @@ def login_view(request):
 
     login(request, user)
 
-    if Customer.objects.filter(user=user):
-        return JsonResponse({"redirectUrl" : "customerDashboard/", "status": True})
-    elif user.groups.filter(name='ADMIN'):
+    if user.groups.filter(name='ADMIN'):
         return JsonResponse({"redirectUrl" : "adminDashboard/", "status": True})
+    elif Customer.objects.filter(user=user):
+        return JsonResponse({"redirectUrl" : "customerDashboard/", "status": True})
     else:
         logout(request)
         return JsonResponse({"validation" : "Invalid request", "status": False})
