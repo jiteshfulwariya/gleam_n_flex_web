@@ -30,7 +30,7 @@ class Customer(models.Model):
     modified=models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{} {}'.format(self.user.first_name, self.user.last_name)
+        return '{} {} {}'.format(self.user.username, self.user.first_name, self.user.last_name)
 
     def get_json(self):
         result = {}
