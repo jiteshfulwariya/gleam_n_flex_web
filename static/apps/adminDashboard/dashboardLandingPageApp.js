@@ -39,6 +39,15 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 				}
 			})
 
+			.state('addCustomer', {
+				url: '/addCustomer/',
+				templateUrl: '../static/apps/adminDashboard/user/addCustomer.html',
+				controller: 'addCustomerCtrl',
+				resolve: {
+					loggedIn: isloggedIn
+				}
+			})
+
 			.state('billDetails', {
 				url: '/billDetails/:id',
 				templateUrl: '../static/apps/adminDashboard/dashboard/invoice.html',

@@ -92,6 +92,12 @@ angular.module('services', [])
 		});
 	};
 
+	var addCustomerRequest = function(customerDetails) {
+		return $http.post('/add/customer/', {customerDetails: customerDetails}).then(function(result) {
+			return result.data;
+		});
+	};
+
 	var getAllProductRequest = function() {
 		return $http.get('/get/all/product/').then(function(result) {
 			return result.data;
@@ -102,6 +108,7 @@ angular.module('services', [])
 		addBillRequest: addBillRequest,
 		logoutRequest: logoutRequest,
 		getAllBillRequest: getAllBillRequest,
+		addCustomerRequest: addCustomerRequest,
 		getCustomerDetailsRequest: getCustomerDetailsRequest,
 		changePasswordRequest: changePasswordRequest,
 		changeUserPasswordRequest: changeUserPasswordRequest,
