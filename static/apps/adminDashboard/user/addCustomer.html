@@ -1,129 +1,264 @@
-<style>
-	label{
-		font-weight: 500;
-	}
-	.sectionTitle{
-		font-weight: 700;
-		font-size: 16px;
-	}
-</style>
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<h4 class="text-center">Customer Registration</h4>
-			<form ng-submit="addCustomer()">
-				<fieldset>
-					<!-- <div class="login-logo"><a href="#">Transportex</a></div> -->
-					<div class="row">
-						<div class="col-sm-6">
-							<label for="registration_no">Registration No.</label>
-							<div class="form-group">
-								<input type="text" name="registration_no" id="registration_no" class="form-control" ng-model="customerDetails.registration_no" placeholder="Registration No." autofocus>
-							</div>
-						</div>
-						<div class="col-sm-6">
-						</div>
-						<div class="col-sm-12">
-							<hr style="margin: 5px;">
-						</div>
-						<div class="col-sm-12">
-							<label class="sectionTitle">Customer Details</label>
-						</div>
-						<div class="col-sm-12">
-							<label for="customer_name">Customer Name *</label>
-							<div class="form-group">
-								<input type="text" name="customer_name" id="customer_name" class="form-control" ng-model="customerDetails.customer_name" placeholder="Customer Name" autofocus required>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<label for="email">Email *</label>
-							<div class="form-group">
-								<input type="text" name="email" id="email" class="form-control" ng-model="customerDetails.email" placeholder="Email" autofocus required>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<label for="dob">Date Of Birth</label>
-							<div class="form-group">
-								<input type="text" name="dob" id="dob" class="form-control" ng-model="customerDetails.dob" placeholder="Date Of Birth" autofocus>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<label for="address">Address</label>
-							<div class="form-group">
-								<input class="form-control" ng-model="customerDetails.address" placeholder="Address" name="address" type="text" id="address" value="">
-							</div>
-						</div>
 
-						<div class="col-sm-6">
-							<label>Mobile Number</label>
-							<div class="form-group">
-								<input class="form-control" ng-model="customerDetails.mobile_no" placeholder="Mobile Number" name="mobile_no" type="text" id="mobile_no" value="">
-							</div>
-						</div>
+    <div id="wrapper">
 
-						<div class="col-sm-6">
-							<label for="prefered_time_to_call">Prefered Time to Call</label>
-							<div class="form-group">
-								<input type="time" name="prefered_time_to_call" id="prefered_time_to_call" class="form-control" ng-model="customerDetails.prefered_time_to_call" placeholder="Token" autofocus>
-							</div>
-						</div>
+		<div id="nav"></div>
 
-						<div class="col-sm-6">
-							<label for="role" style ="font-weight:normal;">Profession: </label>
-				                <select class="form-control" id="role" ng-model="customerDetails.profession" style="border-radius:0px; height:35px;" ng-options="choice.id as choice.name for choice in choicesList.data">
-				                </select>
-						</div>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">User Registration</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Register
+                        </div>
+					<form ng-submit="addCustomer()">
+						<fieldset>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form">
+                                        <div class="form-group">
+                                        <label>Name</label>
+                                        <input class="form-control" type="text" name="customer_name" id="customer_name"  ng-model="customerDetails.customer_name" autofocus required placeholder="Enter Name">
 
-						<div class="col-sm-6">
-							<label for="role" style ="font-weight:normal;">Reason to visit us ? </label>
-				                <select class="form-control" id="role" ng-model="customerDetails.reason_to_visit_us" style="border-radius:0px; height:35px;" ng-options="reason_to_visit_us.id as reason_to_visit_us.name for reason_to_visit_us in reasonToVisitUsList.data">
-				                </select>
-						</div>
+                                        </div>
+										<div class="form-group">
+                                            <label>DOB</label>
+	                                        <input class="form-control" type="date" name="dob" id="dob"  ng-model="customerDetails.dob" autofocus placeholder="Enter Date Of Birth">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Age</label>
+	                                        <input class="form-control" type="text" name="age" id="age"  ng-model="customerDetails.age" autofocus placeholder="Enter Age">
+                                        </div>
+										<div class="form-group">
+                                            <label>Address</label>
+                                            <textarea class="form-control" rows="3" type="text" name="address" id="address" ng-model="customerDetails.address"></textarea>
+                                        </div>
+										<div class="form-group input-group">
+                                            <span class="input-group-addon">@</span>
+                                            <input type="text" class="form-control" type="text" name="email" id="email" ng-model="customerDetails.email" placeholder="Email">
+                                        </div>
+										<div class="form-group">
+                                            <label>Contact No.</label>
+                                            <input class="form-control" type="text" name="contact_no" id="contact_no" ng-model="customerDetails.contact_no" placeholder="Contact No.">
+                                        </div>
+										<div class="form-group">
+                                            <label>Preferred Time to call</label>
+                                            <input class="form-control" type="time" name="preferred_time_to_call" id="preferred_time_to_call" ng-model="customerDetails.preferred_time_to_call" placeholder="Time to Call">
+                                        </div>
+										<div class="form-group">
+                                            <label>Profession</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-checked="selected==1" ng-true-value="1" ng-model="customerDetails.profession">Self Employed
 
-						<div class="col-sm-6">
-							<label>How did you know about us ?</label>
-							<div class="form-group">
-								<input class="form-control" ng-model="customerDetails.how_you_know" placeholder="How did you know about us ?" name="how_you_know" type="text" id="how_you_know" value="">
-							</div>
-						</div>
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-checked="selected==2" ng-true-value="2" ng-model="customerDetails.profession">Homemaker
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-checked="selected==3" ng-true-value="3" ng-model="customerDetails.profession">Salaried
+                                                </label>
+                                            </div>
+											<div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-checked="selected==4" ng-true-value="4" ng-model="customerDetails.profession">Others
+                                                </label>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label>How do you know about us?</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="how_you_know" id="how_you_know" ng-model="customerDetails.how_you_know" value="">Facebook
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="how_you_know" id="how_you_know" ng-model="customerDetails.how_you_know" value="">Instagram
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="how_you_know" id="how_you_know" ng-model="customerDetails.how_you_know" value="">Website
+                                                </label>
+                                            </div>
+											<div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="how_you_know" id="how_you_know" ng-model="customerDetails.how_you_know" value="">Others
+                                                </label>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label>Reason to visit us</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="reason_to_visit_us" id="reason_to_visit_us" ng-model="customerDetails.reason_to_visit_us" value="">Cosmetic
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="reason_to_visit_us" id="reason_to_visit_us" ng-model="customerDetails.reason_to_visit_us" value="">Physiotherapy
+                                                </label>
+                                            </div>
+                                        </div>
+										<div class="form-group">
+                                            <label>Would you like to receive updates from GNF?</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="updates" id="updates" ng-model="customerDetails.updates" value="">Yes
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="updates" id="updates" ng-model="customerDetails.updates" value="">No
+                                                </label>
+                                            </div>
 
-						<div class="col-sm-6">
-							<label for="role" style ="font-weight:normal;">How do you take care of your skin daily?</label>
-				                <select class="form-control" id="role" ng-model="customerDetails.skin_care" style="border-radius:0px; height:35px;" ng-options="skin_care.id as skin_care.name for skin_care in skinCareList.data">
-				                </select>
-						</div>
+                                        </div>
 
-						<div class="col-sm-6">
-							<label for="role" style ="font-weight:normal;">You usually visits parlour for?</label>
-				                <select class="form-control" id="role" ng-model="customerDetails.parlour_reason" style="border-radius:0px; height:35px;" ng-options="parlour_reason.id as parlour_reason.name for parlour_reason in parlourReasonList.data">
-				                </select>
-						</div>
+										<div class="form-group">
+                                            <label>You visit parlour for</label>
+                                            <div class="radio">
+												<label>
+                                                <input type="radio" name="optionsRadios" ng-model="customerDetails.reason_to_visit_parlour" id="optionsRadios1" value="option1" checked>Facial Cleanup of Bleach
+												</label>
+											</div>
+                                            <div class="radio">
+                                                <label>
+												<input type="radio" name="optionsRadios" ng-model="customerDetails.reason_to_visit_parlour" id="optionsRadios2" value="option2" checked>Threading,Waxing
+												</label>
+											</div>
+                                            <div class="radio">
+												<label>
+												<input type="radio" name="optionsRadios" ng-model="customerDetails.reason_to_visit_parlour" id="optionsRadios3" value="option3" checked>Others
+												</label>
+											</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Do you have any of the following medical history</label>
+											<br/>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Hypertension
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Diabets
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Asthma
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Allergies
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Thyriod
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Keloids(raised scars)
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Psoriasin
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Vitiligo
+                                            </label>
+											<label class="checkbox-inline">
+                                                <input type="checkbox" name="medical_history" id="medical_history" ng-model="customerDetails.medical_history" value="">Others
+                                            </label>
+                                        </div>
 
-						<div class="col-sm-6">
-							<label>Would you like to recieve updates from GNF? <input type="checkbox" ng-checked="all"></label>
-							<div class="form-group">
-							</div>
-						</div>
-
-						<div class="col-sm-12">
-							<label class="sectionTitle">Customer Details</label>
-						</div>
 
 
+                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                <div class="col-lg-6">
+                                   <div class="form-group">
+                                            <label>How do you take care of your skin daily</label>
+                                            <select multiple class="form-control">
+                                                <option>Cleanser</option>
+                                                <option>Toner</option>
+                                                <option>Moistuser</option>
+                                                <option>Sunscreen</option>
+                                                <option>Others</option>
+                                            </select>
+                                        </div>
+
+										<div class="form-group">
+                                            <label>Any prescription medicine taken in last one year</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+										<div class="form-group">
+                                            <label>Have you taken a tablet containing Isotrethnoier medicine for pimple?</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">Yes
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">No
+                                                </label>
+                                            </div>
+
+                                        </div>
+										<div class="form-group">
+                                            <input class="form-control" placeholder="If yes what medicine...">
+                                        </div>
+										<div class="form-group">
+                                            <label>Prescribed cream/ointments that you use</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+										<div class="form-group">
+                                            <label>Any reaction on allergies to medicine in past?</label>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">Yes
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">No
+                                                </label>
+                                            </div>
+
+                                        </div>
+										<div class="form-group">
+                                            <input class="form-control" placeholder="If yes what medicine...">
+                                        </div>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+        				</fieldset>
+
+                        <form>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 
 
-					</div>
 
-					<div class="col-sm-12">
-						<hr>
-					</div>
-					<div class="col-sm-12">
-						<div class="form-group text-center">
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</div>
-					</div>
-				</fieldset>
-			</form>
-		</div>
-	</div>
-</div>
+
