@@ -18,7 +18,8 @@ angular.module('controllers')
 		// 	reason_to_visit_us: null,
 		// 	updates: null,
 		// 	reason_to_visit_parlour: null,
-		// 	medical_history: null
+		// 	medical_history: null,
+			// skin_care_method: null
 		// }
 
 		$scope.customerDetails = {
@@ -34,7 +35,8 @@ angular.module('controllers')
 			reason_to_visit_us: null,
 			updates: null,
 			reason_to_visit_parlour: null,
-			medical_history: null
+			medical_history: null,
+			skin_care_method: null
 		}
 
 
@@ -52,7 +54,8 @@ angular.module('controllers')
 		// 	reason_to_visit_us: '7896541230',
 		// 	updates: '1',
 		// 	reason_to_visit_parlour: '1',
-		// 	medical_history: '1'
+		// 	medical_history: '1',
+		// 	skin_care_method: '2'
 		// }
 
 	}

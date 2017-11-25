@@ -18,13 +18,81 @@ def upload_product_image(instance, filename):
 class Customer(models.Model):
     MALE = 1
     FEMALE = 2
-    GENDERCHOICE=((MALE,'MALE'),(FEMALE,'FEMALE'))
+    GENDERCHOICE = ((MALE,'MALE'),(FEMALE,'FEMALE'))
+
+    FACEBOOK = 1
+    INSTAGRAM = 2
+    WEBSITE = 3
+    OTHERS = 4
+    HOWYOUKNOWCHOICES = ((FACEBOOK,'FACEBOOK'),(INSTAGRAM,'INSTAGRAM'),(WEBSITE,'WEBSITE'),(OTHERS,'OTHERS'))
+
+    COSMETIC = 1
+    PHYSIOTHERAPY = 2
+    REASONTOVISITUSCHOICES = ((COSMETIC, 'COSMETIC'),(PHYSIOTHERAPY, 'PHYSIOTHERAPY'))
+
+    YES = 1
+    NO = 2
+    UPDATECHOICES = ((YES, 'YES'),(NO, 'NO'))
+
+    FACIAL_CLEANUP_OF_BLEACH = 1
+    THREADING_WAXING = 2
+    OTHERS = 3
+    REASONTOVISITPARLOURCHOICES = ((FACIAL_CLEANUP_OF_BLEACH, 'FACIAL_CLEANUP_OF_BLEACH'),
+                                    (THREADING_WAXING, 'THREADING_WAXING'),
+                                    (OTHERS,'OTHERS'))
+    HYPERTENSION = 1
+    DIABETS = 2
+    ASTHMA = 3
+    ALLERGIES = 4
+    THYRIOD = 5
+    KELOIDS = 6
+    PSORIASIN = 7
+    VITILIGO = 8
+    OHERS = 9
+    MEDICALHISTORYCHOICES = ((HYPERTENSION, 'HYPERTENSION'),(DIABETS, 'DIABETS'),
+                             (ASTHMA, 'ASTHMA'),(ALLERGIES, 'ALLERGIES'),
+                             (THYRIOD, 'THYRIOD'),(KELOIDS, 'KELOIDS'),
+                             (PSORIASIN, 'PSORIASIN'),(VITILIGO, 'VITILIGO'),
+                             (OHERS, 'OHERS'),
+                            )
+
+    CLEANSER = 1
+    TONER = 2
+    MOISTUSER= 3
+    SUNSCREEN = 4
+    OHERS = 5
+    SKINCAREMETHODCHOICES = ((CLEANSER, 'CLEANSER'),(TONER, 'TONER'),
+                             (MOISTUSER, 'MOISTUSER'),(SUNSCREEN, 'SUNSCREEN'),
+                             (OHERS, 'OHERS')
+                            )
+
+
+
+    SELF_EMPLOYED = 1
+    HOMEMAKER = 2
+    SALARIED = 3
+    OTHERS = 3
+    PROFESSIONCHOICES = ((SELF_EMPLOYED,'Self Employed'),(HOMEMAKER,'Homemaker'),(SALARIED,'Salaried'),(OTHERS,'Others'))
 
     user = models.OneToOneField(User)
     age = models.IntegerField(null=True, blank=True)
     dob = models.DateTimeField(null=True, blank=True)
     mobile_no = models.CharField(max_length=15, null=True, blank=True)
     gender = models.IntegerField(choices=GENDERCHOICE, null=True,blank=True)
+    address = models.TextField(null=True, blank=True)
+    preferred_time_to_call = models.TimeField(null=True, blank=True)
+    profession = models.IntegerField(choices = PROFESSIONCHOICES, null=True, blank=True)
+    how_you_know = models.IntegerField(choices = HOWYOUKNOWCHOICES, null=True, blank=True)
+    reason_to_visit_us = models.IntegerField(choices = REASONTOVISITUSCHOICES, null=True, blank=True)
+    updates = models.IntegerField(choices = UPDATECHOICES, null=True, blank=True)
+    reason_to_visit_parlour= models.IntegerField(choices = REASONTOVISITPARLOURCHOICES, null=True, blank=True)
+    medical_history= models.IntegerField(choices = MEDICALHISTORYCHOICES, null=True, blank=True)
+    skin_care_method= models.IntegerField(choices = SKINCAREMETHODCHOICES, null=True, blank=True)
+    prescription_medicine_taken = models.TextField()
+    taken_isotrethnoier_medicine = models.BooleanField(default=False)
+    prescribed_cream_ointment = models.TextField()
+    allergic_to_medicine = models.BooleanField(default=False)
+
 
     created=models.DateTimeField(auto_now_add=True)
     modified=models.DateTimeField(auto_now=True)
@@ -40,7 +108,7 @@ class Customer(models.Model):
         result['dob'] = self.dob if self.dob else None
         result['mobile_no'] = self.mobile_no if self.mobile_no else None
         result['gender'] = self.gender if self.gender else None
-        result['created'] = convert_date_to_epoch(self.created) if self.created else None
+        result['created'] = convert_date_to_epoch(selficreated) if self.created else None
         result['modified'] = convert_date_to_epoch(self.modified) if self.modified else None
         return result
 
