@@ -35,4 +35,6 @@ urlpatterns = [
     url(r'^sale/product/$', sale_product),
     url(r'^get/choices/$', get_choices),
     url(r'^send/invoice/$', send_invoice),
+    url(r'^create/new/customer/$', create_new_customer),
+
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

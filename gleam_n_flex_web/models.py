@@ -40,6 +40,7 @@ class Customer(models.Model):
     REASONTOVISITPARLOURCHOICES = ((FACIAL_CLEANUP_OF_BLEACH, 'FACIAL_CLEANUP_OF_BLEACH'),
                                     (THREADING_WAXING, 'THREADING_WAXING'),
                                     (OTHERS,'OTHERS'))
+
     HYPERTENSION = 1
     DIABETS = 2
     ASTHMA = 3
@@ -65,8 +66,6 @@ class Customer(models.Model):
                              (MOISTUSER, 'MOISTUSER'),(SUNSCREEN, 'SUNSCREEN'),
                              (OHERS, 'OHERS')
                             )
-
-
 
     SELF_EMPLOYED = 1
     HOMEMAKER = 2
@@ -108,6 +107,20 @@ class Customer(models.Model):
         result['dob'] = self.dob if self.dob else None
         result['mobile_no'] = self.mobile_no if self.mobile_no else None
         result['gender'] = self.gender if self.gender else None
+        result['address'] = self.address if self.address else None
+        result['preferred_time_to_call'] = self.preferred_time_to_call if self.preferred_time_to_call else None
+        result['profession'] = self.profession if self.profession else None
+        result['how_you_know'] = self.how_you_know if self.how_you_know else None
+        result['reason_to_visit_us'] = self.reason_to_visit_us if self.reason_to_visit_us else None
+        result['updates'] = self.updates if self.updates else None
+        result['reason_to_visit_parlour'] = self.reason_to_visit_parlour if self.reason_to_visit_parlour else None
+        result['medical_history'] = self.medical_history if self.medical_history else None
+        result['skin_care_method'] = self.skin_care_method if self.skin_care_method else None
+        result['prescription_medicine_taken'] = self.prescription_medicine_taken if self.prescription_medicine_taken else None
+        result['taken_isotrethnoier_medicine'] = self.taken_isotrethnoier_medicine if self.taken_isotrethnoier_medicine else None
+        result['prescribed_cream_ointment'] = self.prescribed_cream_ointment if self.prescribed_cream_ointment else None
+        result['allergic_to_medicine'] = self.allergic_to_medicine if self.allergic_to_medicine else None
+
         result['created'] = convert_date_to_epoch(selficreated) if self.created else None
         result['modified'] = convert_date_to_epoch(self.modified) if self.modified else None
         return result

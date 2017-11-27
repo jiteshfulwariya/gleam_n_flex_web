@@ -25,6 +25,12 @@ angular.module('services', [])
 		});
 	};
 
+	var addCustomerRequest = function(customerDetails) {
+		return $http.post('/create/new/customer/', {customerDetails: customerDetails}).then(function(result) {
+			return result;
+		});
+	};
+
 	var saleProductRequest = function(productSaleDetails) {
 		return $http.post('/sale/product/', {product_sale_details: productSaleDetails}).then(function(result) {
 			return result;
@@ -92,11 +98,11 @@ angular.module('services', [])
 		});
 	};
 
-	var addCustomerRequest = function(customerDetails) {
-		return $http.post('/add/customer/', {customerDetails: customerDetails}).then(function(result) {
-			return result.data;
-		});
-	};
+	// var addCustomerRequest = function(customerDetails) {
+	// 	return $http.post('/add/customer/', {customerDetails: customerDetails}).then(function(result) {
+	// 		return result.data;
+	// 	});
+	// };
 
 	var getAllProductRequest = function() {
 		return $http.get('/get/all/product/').then(function(result) {
@@ -121,7 +127,7 @@ angular.module('services', [])
 		restoredUserRequest: restoredUserRequest,
 		saleProductRequest: saleProductRequest,
 		sendInvoiceRequest: sendInvoiceRequest,
-		addProductRequest: addProductRequest
+		addProductRequest: addProductRequest,
 	};
 
 });

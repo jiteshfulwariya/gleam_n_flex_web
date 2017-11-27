@@ -46,7 +46,7 @@
                                         </div>
 										<div class="form-group">
                                             <label>Contact No.</label>
-                                            <input class="form-control" type="text" name="contact_no" id="contact_no" ng-model="customerDetails.contact_no" placeholder="Contact No.">
+                                            <input class="form-control" type="text" name="mobile_no" id="mobile_no" ng-model="customerDetails.mobile_no" placeholder="Contact No.">
                                         </div>
 										<div class="form-group">
                                             <label>Preferred Time to call</label>
@@ -205,12 +205,12 @@
                                             <label>Have you taken a tablet containing Isotrethnoier medicine for pimple?</label>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Yes
+                                                    <input type="checkbox" name="taken_isotrethnoier_medicine" id="taken_isotrethnoier_medicine" ng-model="customerDetails.taken_isotrethnoier_medicine" ng-true-value="1">Yes
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">No
+                                                    <input type="checkbox" name="taken_isotrethnoier_medicine" id="taken_isotrethnoier_medicine" ng-model="customerDetails.taken_isotrethnoier_medicine" ng-true-value="2">No
                                                 </label>
                                             </div>
                                         </div>
@@ -226,12 +226,12 @@
                                             <label>Any reaction on allergies to medicine in past?</label>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Yes
+                                                    <input type="checkbox" name="allergic_to_medicine" id="allergic_to_medicine" ng-model="customerDetails.allergic_to_medicine" ng-true-value="1">Yes
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">No
+                                                    <input type="checkbox" name="allergic_to_medicine" id="allergic_to_medicine" ng-model="customerDetails.allergic_to_medicine" ng-true-value="2">No
                                                 </label>
                                             </div>
 

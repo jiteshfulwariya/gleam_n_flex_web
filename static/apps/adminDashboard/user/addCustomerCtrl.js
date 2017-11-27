@@ -11,7 +11,7 @@ angular.module('controllers')
 		// 	age: null,
 		// 	address: null,
 		// 	email: null,
-		// 	contact_no: null,
+		// 	mobile_no: null,
 		// 	preferred_time_to_call: null,
 		// 	profession: null,
 		// 	how_you_know: null,
@@ -28,7 +28,7 @@ angular.module('controllers')
 			age: null,
 			address: null,
 			email: 'abc@gmail.com',
-			contact_no: null,
+			mobile_no: null,
 			preferred_time_to_call: null,
 			profession: null,
 			how_you_know: null,
@@ -36,9 +36,10 @@ angular.module('controllers')
 			updates: null,
 			reason_to_visit_parlour: null,
 			medical_history: null,
-			skin_care_method: null
+			skin_care_method: null,
+			taken_isotrethnoier_medicine: null,
+			allergic_to_medicine: null
 		}
-
 
 
 		// $scope.customerDetails = {
@@ -47,7 +48,7 @@ angular.module('controllers')
 		// 	age: 'asds78',
 		// 	address: 'Test Patient',
 		// 	email: 'nikhil123@gmail.com',
-		// 	contact_no: '7896541230',
+		// 	mobile_no: '7896541230',
 		// 	preferred_time_to_call: "12:30",
 		// 	profession: '25',
 		// 	how_you_know: '25',
@@ -73,7 +74,9 @@ angular.module('controllers')
 
 		$scope.customerDetails.dob = new Date($scope.customerDetails.dob).getTime();
 		console.log('customerDetails', $scope.customerDetails);
-		var dataPromis = networkCall.addBillRequest($scope.customerDetails);
+		// $scope.customerDetails.preferred_time_to_call = $scope.customerDetails.preferred_time_to_call.toString();
+
+		var dataPromis = networkCall.addCustomerRequest($scope.customerDetails);
 		dataPromis.then(function(result) {
 			if (result.data.status) {
 				console.log(result);

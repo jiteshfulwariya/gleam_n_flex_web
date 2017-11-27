@@ -13,6 +13,9 @@ from .models import Customer, Bill, Product
 from helper_functions import convert_epoch_to_date
 from .settings import EMAIL_HOST_USER, BASE_DIR
 
+def convert_epoch_to_date(epoch):
+    return datetime.datetime.fromtimestamp(long(epoch)/1000.0) if epoch else None
+
 def loginIndex(request):
     return render_to_response('html_templates/loginIndex.html')
 
@@ -184,6 +187,19 @@ def create_customer(bill_details):
     dob = bill_details.get('dob')
     age = bill_details.get('patient_age')
     gender = bill_details.get('gender')
+    # address = bill_details.get('address')
+    # preferred_time_to_call = bill_details.get('preferred_time_to_call')
+    # profession = bill_details.get('profession')
+    # how_you_know = bill_details.get('how_you_know')
+    # reason_to_visit_us = bill_details.get('reason_to_visit_us')
+    # updates = bill_details.get('updates')
+    # reason_to_visit_parlour = bill_details.get('reason_to_visit_parlour')
+    # medical_history = bill_details.get('medical_history')
+    # skin_care_method = bill_details.get('skin_care_method')
+    # prescription_medicine_taken = bill_details.get('prescription_medicine_taken')
+    # taken_isotrethnoier_medicine = bill_details.get('taken_isotrethnoier_medicine')
+    # prescribed_cream_ointment = bill_details.get('prescribed_cream_ointment')
+    # allergic_to_medicine = bill_details.get('allergic_to_medicine')
 
     with transaction.atomic():
         if dob:
@@ -240,3 +256,83 @@ def send_invoice(request):
     email.send()
 
     return JsonResponse({"validation" : 'Invoice sent', "status": True})
+
+
+def create_new_customer(request):
+    jsonObj = json.loads(request.body)
+    customer_json = jsonObj.get('customerDetails')
+    customer_name = customer_json.get('customer_name')
+    mobile_no = customer_json.get('mobile_no')
+    email = customer_json.get('email')
+    dob = customer_json.get('dob')
+    age = customer_json.get('patient_age')
+    gender = customer_json.get('gender')
+    address = customer_json.get('address')
+    preferred_time_to_call = customer_json.get('preferred_time_to_call')
+    profession = customer_json.get('profession')
+    how_you_know = customer_json.get('how_you_know')
+    reason_to_visit_us = customer_json.get('reason_to_visit_us')
+    updates = customer_json.get('updates')
+    reason_to_visit_parlour = customer_json.get('reason_to_visit_parlour')
+    medical_history = customer_json.get('medical_history')
+    skin_care_method = customer_json.get('skin_care_method')
+    prescription_medicine_taken = customer_json.get('prescription_medicine_taken')
+    taken_isotrethnoier_medicine = customer_json.get('taken_isotrethnoier_medicine')
+    prescribed_cream_ointment = customer_json.get('prescribed_cream_ointment')
+    allergic_to_medicine = customer_json.get('allergic_to_medicine')
+
+    full_name = customer_name.split(' ')
+
+    print 'customer_json: ', customer_json
+    print 'full_name: ', full_name
+
+    if len(full_name) == 2:
+        first_name = full_name[0]
+        last_name = full_name[1]
+    elif len(full_name) == 3:
+        first_name = full_name[0]
+        middle_name = full_name[1]
+        last_name = full_name[2]
+    else:
+        print 'Invalid Customer Name Format'
+        return JsonResponse({"validation" : 'Invalid Customer Name Format', "status": False})
+        # return None
+
+    try:
+        with transaction.atomic():
+            user = User.objects.create(username=email, first_name=first_name, last_name=last_name)
+
+            del customer_json['customer_name']
+            del customer_json['email']
+            customer_json['user'] = user
+
+            try:
+                customer = Customer()
+            except Exception as e:
+                print 'Error while saving customer: ', e
+                return JsonResponse({"validation" : 'Error while saving customer', "status": False})
+
+            customer.user = user
+            customer.age = age
+            customer.dob = convert_epoch_to_date(dob)
+            # customer.mobile_no = mobile_no
+            # customer.gender = gender
+            # customer.address = address
+            # customer.preferred_time_to_call = preferred_time_to_call
+            # customer.profession = profession
+            # customer.how_you_know = how_you_know
+            # customer.reason_to_visit_us = reason_to_visit_us
+            # customer.updates = updates
+            # customer.reason_to_visit_parlour = reason_to_visit_parlour
+            # customer.medical_history = medical_history
+            # customer.skin_care_method = skin_care_method
+            # customer.prescription_medicine_taken = prescription_medicine_taken
+            # customer.taken_isotrethnoier_medicine = taken_isotrethnoier_medicine
+            # customer.prescribed_cream_ointment = prescribed_cream_ointment
+            # customer.allergic_to_medicine = allergic_to_medicine
+            customer.save()
+
+            return JsonResponse({"validation" : 'New Customer saved', "status": True})
+    except Exception as e:
+        print 'Error while saving user: ', e
+        return JsonResponse({"validation" : 'Error while saving user', "status": False})
