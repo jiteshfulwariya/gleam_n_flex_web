@@ -87,10 +87,10 @@ class Customer(models.Model):
     reason_to_visit_parlour= models.IntegerField(choices = REASONTOVISITPARLOURCHOICES, null=True, blank=True)
     medical_history= models.IntegerField(choices = MEDICALHISTORYCHOICES, null=True, blank=True)
     skin_care_method= models.IntegerField(choices = SKINCAREMETHODCHOICES, null=True, blank=True)
-    prescription_medicine_taken = models.TextField()
-    taken_isotrethnoier_medicine = models.BooleanField(default=False)
-    prescribed_cream_ointment = models.TextField()
-    allergic_to_medicine = models.BooleanField(default=False)
+    prescription_medicine_taken = models.TextField(null=True, blank=True)
+    taken_isotrethnoier_medicine = models.NullBooleanField(default=False)
+    prescribed_cream_ointment = models.TextField(null=True, blank=True)
+    allergic_to_medicine = models.NullBooleanField(default=False)
 
 
     created=models.DateTimeField(auto_now_add=True)

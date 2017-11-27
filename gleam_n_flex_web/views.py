@@ -315,21 +315,21 @@ def create_new_customer(request):
             customer.user = user
             customer.age = age
             customer.dob = convert_epoch_to_date(dob)
-            # customer.mobile_no = mobile_no
-            # customer.gender = gender
-            # customer.address = address
-            # customer.preferred_time_to_call = preferred_time_to_call
-            # customer.profession = profession
-            # customer.how_you_know = how_you_know
-            # customer.reason_to_visit_us = reason_to_visit_us
-            # customer.updates = updates
-            # customer.reason_to_visit_parlour = reason_to_visit_parlour
-            # customer.medical_history = medical_history
-            # customer.skin_care_method = skin_care_method
-            # customer.prescription_medicine_taken = prescription_medicine_taken
-            # customer.taken_isotrethnoier_medicine = taken_isotrethnoier_medicine
-            # customer.prescribed_cream_ointment = prescribed_cream_ointment
-            # customer.allergic_to_medicine = allergic_to_medicine
+            customer.mobile_no = mobile_no
+            customer.gender = gender
+            customer.address = address
+            customer.preferred_time_to_call = preferred_time_to_call
+            customer.profession = profession
+            customer.how_you_know = how_you_know
+            customer.reason_to_visit_us = reason_to_visit_us
+            customer.updates = updates
+            customer.reason_to_visit_parlour = reason_to_visit_parlour
+            customer.medical_history = medical_history
+            customer.skin_care_method = skin_care_method
+            customer.prescription_medicine_taken = prescription_medicine_taken
+            customer.taken_isotrethnoier_medicine = taken_isotrethnoier_medicine
+            customer.prescribed_cream_ointment = prescribed_cream_ointment
+            customer.allergic_to_medicine = allergic_to_medicine
             customer.save()
 
             return JsonResponse({"validation" : 'New Customer saved', "status": True})
