@@ -24,7 +24,7 @@ angular.module('dashboardLandingPageApp', ['controllers', 'services', 'ui.router
 			.state('addBill', {
 				url: '/addBill',
 				templateUrl: '../static/apps/adminDashboard/user/addBill.html',
-				// controller: 'addBillCtrl',
+				controller: 'addBillCtrl',
 				resolve: {
 					loggedIn: isloggedIn
 				}

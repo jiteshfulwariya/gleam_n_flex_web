@@ -5,37 +5,37 @@ angular.module('controllers')
 	$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
 
 	$scope.initializeBillDetails = function () {
-			$scope.billDetails = {
-			bill_no: '859',
-			op_no: '58746',
-			token: 'asds78',
-			patient_name: 'Test Patient',
-			email: 'nikhil123@gmail.com',
-			consultant: 'Test Consultant',
-			particulars: null,
-			qty: '25',
-			patient_age: '25',
-			mobile_no: '7896541230',
-			gender: '1',
-			payment_type: '1'
-		}
-
-		// $scope.billDetails = {
-		// 	bill_no: null,
-		// 	op_no: null,
-		// 	token: null,
-		// 	amount: null,
-		// 	patient_name: null,
-		// 	email: null,
-		// 	consultant: null,
+		// 	$scope.billDetails = {
+		// 	bill_no: '859',
+		// 	op_no: '58746',
+		// 	token: 'asds78',
+		// 	patient_name: 'Test Patient',
+		// 	email: 'nikhil123@gmail.com',
+		// 	consultant: 'Test Consultant',
 		// 	particulars: null,
-		// 	dob: null,
-		// 	qty: null,
-		// 	patient_age: null,
-		// 	mobile_no: null,
-		// 	gender: null,
-		// 	payment_type: null
+		// 	qty: '25',
+		// 	patient_age: '25',
+		// 	mobile_no: '7896541230',
+		// 	gender: '1',
+		// 	payment_type: '1'
 		// }
+
+		$scope.billDetails = {
+			bill_no: null,
+			op_no: null,
+			token: null,
+			amount: null,
+			patient_name: null,
+			email: null,
+			consultant: null,
+			particulars: null,
+			dob: null,
+			qty: null,
+			patient_age: null,
+			mobile_no: null,
+			gender: null,
+			payment_type: null
+		}
 
 	}
 

@@ -70,28 +70,29 @@ def add_bill(request):
     if not bill_no:
         return JsonResponse({"validation" : "Invalid Request", "status": False})
 
-    bill_info = {}
-    customer = create_customer(bill_details)
-    if not customer:
-        return JsonResponse({"validation" : "Invalid Request", "status": False})
+    with transaction.atomic():
+        bill_info = {}
+        customer = create_customer(bill_details)
+        if not customer:
+            return JsonResponse({"validation" : "Invalid Request", "status": False})
 
-    bill_info['customer'] = customer
-    bill_info['bill_no'] = bill_no
-    bill_info['op_no'] = op_no
-    bill_info['token'] = token
-    bill_info['consultant'] = consultant
-    bill_info['amount'] = amount
-    bill_info['particulars'] = particulars
-    bill_info['qty'] = qty
-    bill_info['payment_type'] = payment_type
+        bill_info['customer'] = customer
+        bill_info['bill_no'] = bill_no
+        bill_info['op_no'] = op_no
+        bill_info['token'] = token
+        bill_info['consultant'] = consultant
+        bill_info['amount'] = amount
+        bill_info['particulars'] = particulars
+        bill_info['qty'] = qty
+        bill_info['payment_type'] = payment_type
 
-    try:
-       amount = int(amount)
-    except Exception as e:
-        print e
-        return JsonResponse({"validation" : "Invalid Amount", "status": False})
+        try:
+           amount = int(amount)
+        except Exception as e:
+            print e
+            return JsonResponse({"validation" : "Invalid Amount", "status": False})
 
-    bill = Bill.objects.create(**bill_info)
+        bill = Bill.objects.create(**bill_info)
 
     return JsonResponse({"validation" : "New Bill Saved", "status": True})
 
