@@ -4,9 +4,28 @@
     <meta charset="utf-8">
     <title>Invoice</title>
 
+            <script type="text/javascript">
+        function printContent(el)
+        {
+            var r=document.body.innerHTML;
+            var p=document.getElementById(el).innerHTML;
+            document.body.innerHTML = p;
+            window.print();
+            document.body.innerHTML=r;
+        }
+
+        /*    console.log("prtContent", prtContent.innerHTML);
+            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+            WinPrint.document.write(prtContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();*/
+
+</script>
     <style>
     .invoice-box{
-        max-width:800px;
+        max-width:1200px;
         margin:auto;
         padding:30px;
         border:1px solid #eee;
@@ -15,6 +34,7 @@
         line-height:24px;
         font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         color:#555;
+        margin-left: 34px;
     }
 
     .invoice-box table{
@@ -82,12 +102,40 @@
             text-align:center;
         }
     }
+    .printinvoice {margin-left: 1150px;}
+
+    .invoice-box
+    {
+        background-image: url("gnf.png");
+        opacity: 0.75;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        color: black;
+        font-weight: bold;
+        margin-left: 225px;
+
+    }
+
+
     </style>
 </head>
 
 <body>
-    <div class="invoice-box" id="table-wrapper">
-        <table cellpadding="0" cellspacing="0">
+
+<div class="printinvoice">
+<h1>
+    <div>
+        <td>
+            <button onclick="printContent('div1')">Print Invoice</button>
+        </td>
+    </div>
+ </h1>
+</div>
+
+    <div id="div1" class="invoice-box" align="center" >
+        <img src="letterhead.png" width="1150" hspace="28" height="150">
+        <br><br><br><br><br>
+        <table cellpadding="120" cellspacing="0" align="center" border="1">
             <tr class="top">
                 <td colspan="2">
                     <table>
@@ -96,9 +144,7 @@
                                 <img src="/Media/gnf_logo.png" style="width:100%; max-width:300px;">
                             </td>
 
-                            <td>
-                                <button onclick="printTrips()">Print Invoice</button>
-                            </td>
+
                         </tr>
                     </table>
                 </td>
@@ -106,18 +152,34 @@
 
             <tr class="information">
                 <td colspan="2">
-                    <table>
+                    <table style="background-size: 100%;">
                         <tr>
-                            <td>
-                                Patient Name: {{billDetails.patient_name}}<br>
-                                Mobile Number: {{billDetails.mobile_no}}<br>
-                                Age: {{billDetails.patient_age}}<br>
+
+                            <td style="font-size: 25px;">
+                                <br>
+                                <br>
+                                  Patient Name: {{billDetails.patient_name}}
+                                <br><br>
+                                Mobile Number: {{billDetails.mobile_no}}
+                                <br>
+                                <br>
+                                Age: {{billDetails.patient_age}}
+                                <br>
+                                <br>
                             </td>
 
-                            <td>
-                                Bill No. #: {{billDetails.bill_no}}<br>
-                                Token: {{billDetails.token}}<br>
+                            <td style="font-size: 25px;">
+                                <br>
+                                <br>
+                                Bill No. #: {{billDetails.bill_no}}
+                                <br>
+                                <br>
+                                Token: {{billDetails.token}}
+                                <br>
+                                <br>
                                 OP No.: {{billDetails.op_no}}
+                                <br>
+                                <br>
                             </td>
                         </tr>
                     </table>
@@ -145,42 +207,34 @@
             </tr>
  -->
             <tr class="heading">
-                <td>
+                <td align="center" style="font-size: 35px;">
                     Particulars
                 </td>
 
-                <td>
+                <td style="font-size: 35px; padding-right:230px;" align="center">
                     Price
                 </td>
             </tr>
-
             <tr class="item">
-                <td>
+                <td style="font-size: 25px;">
+                <br>
                     {{billDetails.particulars}}
+                    <br>
                 </td>
 
-                <td>
+                <td style="font-size: 25px;">
+                <br>
                     {{billDetails.amount}}
+                    <br>
                 </td>
             </tr>
 
         </table>
+
     </div>
 </body>
 
 
-<script type="text/javascript">
-            function printTrips() {
-            var prtContent = document.getElementById("table-wrapper");
-            console.log("prtContent", prtContent.innerHTML);
-            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-            WinPrint.document.write(prtContent.innerHTML);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
-        }
 
-</script>
 
 </html>
