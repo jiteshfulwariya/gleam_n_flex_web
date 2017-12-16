@@ -27,14 +27,13 @@
     .invoice-box{
         max-width:1200px;
         margin:auto;
-        padding:30px;
+        padding:15px;
         border:1px solid #eee;
         box-shadow:0 0 10px rgba(0, 0, 0, .15);
         font-size:16px;
         line-height:24px;
         font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         color:#555;
-        margin-left: 34px;
     }
 
     .invoice-box table{
@@ -52,13 +51,11 @@
         text-align:right;
     }
 
-    .invoice-box table tr.top table td{
-        padding-bottom:20px;
-    }
+
 
     .invoice-box table tr.top table td.title{
-        font-size:45px;
-        line-height:45px;
+        font-size:30px;
+        line-height:30px;
         color:#333;
     }
 
@@ -102,18 +99,24 @@
             text-align:center;
         }
     }
-    .printinvoice {margin-left: 1150px;}
+    .printinvoice{
+        text-align: right;
+        margin-right: 50px;
+    }
 
     .invoice-box
     {
-        background-image: url("gnf.png");
-        opacity: 0.75;
-        background-repeat: no-repeat;
-        background-size: 100%;
+        position: relative;
         color: black;
         font-weight: bold;
-        margin-left: 225px;
 
+    }
+    #watermark{
+        position: absolute;
+        top: 50%;
+        text-align: center;
+        opacity: 0.1;
+        width: 100%;
     }
 
 
@@ -132,16 +135,18 @@
  </h1>
 </div>
 
-    <div id="div1" class="invoice-box" align="center" >
-        <img src="letterhead.png" width="1150" hspace="28" height="150">
-        <br><br><br><br><br>
+    <div id="div1" class="invoice-box" >
+        <div id="watermark">
+            <!-- <img src="../Media/gnf.png"> -->
+        </div>
+        <img src="../Media/header.png" width="100%">
         <table cellpadding="120" cellspacing="0" align="center" border="1">
             <tr class="top">
                 <td colspan="2">
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="/Media/gnf_logo.png" style="width:100%; max-width:300px;">
+                                <h5 style="margin: 0px;">INVOICE</h5>
                             </td>
 
 
@@ -155,7 +160,7 @@
                     <table style="background-size: 100%;">
                         <tr>
 
-                            <td style="font-size: 25px;">
+                            <td style="font-size: 18px;">
                                 <br>
                                 <br>
                                   Patient Name: {{billDetails.patient_name}}
@@ -168,7 +173,7 @@
                                 <br>
                             </td>
 
-                            <td style="font-size: 25px;">
+                            <td style="font-size: 18px;">
                                 <br>
                                 <br>
                                 Bill No. #: {{billDetails.bill_no}}
@@ -207,22 +212,22 @@
             </tr>
  -->
             <tr class="heading">
-                <td align="center" style="font-size: 35px;">
+                <td align="center" style="font-size: 22px;">
                     Particulars
                 </td>
 
-                <td style="font-size: 35px; padding-right:230px;" align="center">
+                <td style="font-size: 22px; text-align:center">
                     Price
                 </td>
             </tr>
             <tr class="item">
-                <td style="font-size: 25px;">
+                <td style="font-size: 18px;">
                 <br>
                     {{billDetails.particulars}}
                     <br>
                 </td>
 
-                <td style="font-size: 25px;">
+                <td style="font-size: 18px;">
                 <br>
                     {{billDetails.amount}}
                     <br>
