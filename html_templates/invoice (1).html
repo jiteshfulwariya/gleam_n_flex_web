@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="print.css" media="print">
+    <title>Invoice</title>
+
+            <script type="text/javascript">
+        function printContent(el)
+        {
+            var r=document.body.innerHTML;
+            var p=document.getElementById(el).innerHTML;
+            document.body.innerHTML = p;
+            window.print();
+            document.body.innerHTML=r;
+        }
+
+        /*    console.log("prtContent", prtContent.innerHTML);
+            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+            WinPrint.document.write(prtContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();*/
+
+</script>
+</head>
+
+<body>
+
+<div class="printinvoice">
+<h1>
+    <div>
+        <td>
+            <button onclick="printContent('div1')">Print Invoice</button>
+        </td>
+    </div>
+ </h1>
+</div>
+
+    <div id="div1" class="invoice-box" >
+        <img src="header.png" width="100%">
+        <table cellpadding="2" cellspacing="0" border="1" width="100%">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <h5 style="margin: 10px; font-size: 18px;">INVOICE</h5>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+
+                            <td style="font-size: 18px;">
+                                <br>
+                                <br>
+                                  Patient Name: {{billDetails.patient_name}}
+                                <br><br>
+                                Mobile Number: {{billDetails.mobile_no}}
+                                <br>
+                                <br>
+                                Age: {{billDetails.patient_age}}
+                                <br>
+                                <br>
+                            </td>
+
+                            <td style="font-size: 18px;">
+                                <br>
+                                <br>
+                                Bill No. #: {{billDetails.bill_no}}
+                                <br>
+                                <br>
+                                Token: {{billDetails.token}}
+                                <br>
+                                <br>
+                                OP No.: {{billDetails.op_no}}
+                                <br>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+<!--             <tr class="heading">
+                <td>
+                    Payment Method
+                </td>
+
+                <td>
+                    Check #
+                </td>
+            </tr>
+
+            <tr class="details">
+                <td>
+                    Check
+                </td>
+
+                <td>
+                    1000
+                </td>
+            </tr>
+ -->
+            <tr class="heading">
+                <td align="center" style="font-size: 22px;">
+                    Particulars
+                </td>
+
+                <td style="font-size: 22px; text-align:center">
+                    Price
+                </td>
+            </tr>
+            <tr class="item">
+                <td style="font-size: 18px;">
+                <br>
+                    {{billDetails.particulars}}
+                    <br>
+                </td>
+
+                <td style="font-size: 18px;">
+                <br>
+                    {{billDetails.amount}}
+                    <br>
+                </td>
+            </tr>
+            
+
+        </table>
+<h5 style="margin: 10px 5px; font-size: 14px;">This bill is computer generated, hence does not require any stamp or signature</h5>
+    </div>
+</body>
+
+
+
+
+</html>
